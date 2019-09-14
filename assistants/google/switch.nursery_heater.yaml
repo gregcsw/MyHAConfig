@@ -1,0 +1,7 @@
+switch.nursery_heater:
+  name: Nursery Heater
+  expose: true
+  aliases:
+    - Sarah's Heater
+    - Heater
+  room: Nursery

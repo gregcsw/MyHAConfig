@@ -1,0 +1,163 @@
+title: Wrench Compound
+# Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
+#background: center / cover no-repeat url("/background.png") fixed
+# Exclude entities from "Unused entities" view
+#excluded_entities:
+  #- weblink.router
+resources:
+  - url: /local/atomic-calendar.js
+    type: module
+  - url: /community_plugin/bar-card/bar-card.js
+    type: js
+  - url: /community_plugin/button-card/button-card.js
+    type: module
+  - url: /community_plugin/lovelace-card-mod/card-mod.js
+    type: module
+  - url: /local/github/thomasloven/card-tools.js?track=true
+    type: js
+  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+    type: module
+  - url: /community_plugin/decluttering-card/decluttering-card.js
+    type: module
+  - url: /community_plugin/entity-attributes-card/entity-attributes-card.js
+    type: module
+  - url: /community_plugin/lovelace-google-keep-card/google-keep-card.js
+    type: module
+  - url: /community_plugin/group-card/group-card.js
+    type: module
+  - url: /local/github/thomasloven/layout-card.js?track=true
+    type: js
+  - url: /community_plugin/mini-graph-card/mini-graph-card.js
+    type: module
+  - url: /community_plugin/monster-card/monster-card.js
+    type: module
+  - url: /local/theme-maker.js
+    type: module
+  - url: /community_plugin/unused-card/unused-card.js
+    type: module
+  # - url: /local/custom-lovelace/weather-card/weather-card.js
+  #   type: module
+  - url: /community_plugin/weather-card/weather-card.js
+    type: module
+
+button_card_templates:
+  homekit-button:
+    show_state: true
+    show_label: true
+    hold_action: 
+      action: more-info
+    styles:
+      grid:
+        - grid-template-areas: '"i" "l" "n" "s"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: 1fr min-content min-content
+      img_cell:
+        - justify-content: start
+        - align-self: start
+        - text-align: start
+      icon: 
+        - align-self: start
+      name:
+        - justify-self: start
+        - padding-left: 10px
+        - font-weight: bold
+        - font-size: 12px
+      state:
+        - justify-self: start
+        - padding-left: 11px
+        - font-size: 12px
+      label:
+        - justify-self: start
+        - padding-left: 10px
+    state:
+      - value: 'off'
+        styles:
+          card:
+            - filter: opacity(50%)
+          icon:
+            - filter: grayscale(100%)
+      - value: 'unavailable'
+        styles:
+          card:
+            - filter: opacity(30%)
+          icon:
+            - filter: grayscale(100%)
+          state:
+            - color: red
+            - font-weight: bold
+    aspect_ratio: 1/1
+
+decluttering_templates:  
+  tracking_picture_button:
+    card:
+      type: custom:button-card
+      entity: '[[entity]]'
+      show_last_changed: true
+      show_state: true
+      show_icon: true
+      show_name: false
+      show_entity_picture: true
+      entity_picture: '[[entity_picture_away]]'
+      tap_action:
+        action: more-info
+      state:
+        - value: 'home'
+          entity_picture: '[[entity_picture_home]]'
+      style: |
+        ha-card {
+          font-family: 'Open Sans', sans-serif;
+          padding-top: 15px !important;
+          background-color: rgba(0, 0, 0, 0);
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
+        }
+        img {
+          width: 100% !important;
+        }
+        #img-cell {
+          background-color: #F5F5F5;
+          border-radius: 50px;
+          height: 50px !important;
+          width: 50px !important;
+        }
+        #state {
+          padding-top: 5px;
+        }
+        #label {
+          font-size: 60%;
+        }
+
+cch:
+  exceptions:
+    - conditions:
+        query_string: kiosk
+      config:
+        kiosk_mode: true
+
+views:
+  - !include lovelace/01-mobile.yaml
+  - !include lovelace/02-cameras.yaml
+  - !include lovelace/03-tv-remote.yaml
+  - !include lovelace/04-climate.yaml
+  - !include lovelace/05-lights.yaml
+  - !include lovelace/06-switches.yaml
+  - !include lovelace/07-device-status.yaml
+  - !include lovelace/08-homekit-dashboard.yaml
+  - !include lovelace/09-unused-entities.yaml
+
+  - title: Mobile2
+    id: mobile2
+    icon: mdi:cellphone-iphone
+    panel: true
+    path: mobile2
+    cards:
+
+      - type: custom:google-keep-card
+        entity: sensor.google_keep_c6fe53a582
+        # theme: dark
+        alpha: 0.7
+        show:
+          - unchecked
+        
+        # - !include lovelace/99-old-dashboard.yaml

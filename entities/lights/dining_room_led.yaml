@@ -1,0 +1,15 @@
+#DiningRoomLEDNew
+platform: mqtt
+name: "Dining Room LED"
+command_topic: "bruh/DiningRoomLED/setpower"
+state_topic: "bruh/DiningRoomLED/setpowerpub"
+rgb_state_topic: "bruh/DiningRoomLED/setcolorpub"
+rgb_command_topic: "bruh/DiningRoomLED/setcolor"
+brightness_state_topic: "bruh/DiningRoomLED/setbrightnesspub"
+brightness_command_topic: "bruh/DiningRoomLED/setbrightness"
+optimistic: false
+availability_topic: "tele/LEDMasterSwitch/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"

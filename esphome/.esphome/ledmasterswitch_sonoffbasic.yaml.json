@@ -1,0 +1,24 @@
+{
+  "arduino_version": "espressif8266@1.8.0", 
+  "address": "ledmasterswitch_sonoffbasic.local", 
+  "storage_version": 1, 
+  "esphome_version": "1.13.6", 
+  "build_path": "/config/esphome/ledmasterswitch_sonoffbasic", 
+  "name": "ledmasterswitch_sonoffbasic", 
+  "loaded_integrations": [
+    "api", 
+    "binary_sensor", 
+    "esphome", 
+    "gpio", 
+    "logger", 
+    "network", 
+    "ota", 
+    "status_led", 
+    "switch", 
+    "wifi"
+  ], 
+  "firmware_bin_path": "/data/ledmasterswitch_sonoffbasic/.pioenvs/ledmasterswitch_sonoffbasic/firmware.bin", 
+  "board": "esp01_1m", 
+  "esp_platform": "ESP8266", 
+  "src_version": 1
+}

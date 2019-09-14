@@ -1,0 +1,6 @@
+# The light component allows you to track and control various light bulbs.
+#
+# https://www.home-assistant.io/components/light/
+#
+# I still need to split up this file into single files
+light: !include_dir_list ../entities/lights

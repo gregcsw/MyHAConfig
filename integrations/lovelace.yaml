@@ -1,0 +1,7 @@
+# Lovelace component for confuring the UI.
+#
+# https://www.home-assistant.io/lovelace/
+# https://www.home-assistant.io/lovelace/yaml-mode/
+#
+lovelace:
+  mode: yaml

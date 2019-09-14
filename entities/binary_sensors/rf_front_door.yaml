@@ -1,0 +1,15 @@
+# RF Door Sensor for Sending Status of Front Door
+# MQTT rules https://www.youtube.com/watch?v=w_CchtI-oK0&t=748s
+# rule1 on Sonoff RF Bridge
+
+platform: mqtt
+name: "Front Door"
+state_topic: "RFBridge/frontdoor"
+availability_topic: "tele/sonoffrfbridge/LWT"
+qos: 1
+payload_on: "Open"
+payload_off: "Closed"
+payload_available: "Online"
+payload_not_available: "Offline"
+device_class: door
+

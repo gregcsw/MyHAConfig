@@ -1,0 +1,9 @@
+# Left Button for Apple TV
+
+apple_tv_left:
+  alias: Apple TV Left
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.lounge_apple_tv
+      command: left

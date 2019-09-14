@@ -1,0 +1,4 @@
+climate.outside_temp:
+  name: Outside Temperature
+  expose: true
+  room: Outside

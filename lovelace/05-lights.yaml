@@ -1,0 +1,28 @@
+#################################
+#                               #
+#           LIGHTS              #
+#                               #
+#################################
+
+title: Lights
+id: lights
+icon: mdi:lightbulb
+cards:
+
+  - type: custom:monster-card
+    card:
+      type: entities
+      title: Lights that are ON
+    filter:
+      include:
+        - domain: light
+          state: "on"
+
+  - type: custom:monster-card
+    card:
+      type: entities
+      title: Lights that are OFF
+    filter:
+      include:
+        - domain: light
+          state: "off"

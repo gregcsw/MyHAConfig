@@ -1,0 +1,6 @@
+climate.pool_temp:
+  name: Pool Temperature
+  expose: true
+  aliases:
+    - Swimming Pool Temperature
+  room: Outside

@@ -1,0 +1,13 @@
+# The life360 integration allows you to detect presence using the unofficial API of Life360.
+# https://www.home-assistant.io/components/life360/
+
+life360:
+  # accounts:
+# Credentials entered in front end.
+    # - username: !secret life360_user
+    #   password: !secret life360_password
+  show_as_state:
+  - driving
+  - moving
+  warning_threshold: 2
+  error_threshold: 3

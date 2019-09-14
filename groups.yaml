@@ -1,0 +1,153 @@
+### Groups (CARDS)
+presence:
+  name: Presence Detection
+  entities:
+    - person.greg
+    - person.jenny
+    - person.lynne
+    - person.sally
+    - device_tracker.life360_greg
+    - device_tracker.life360_jenny
+    - device_tracker.life360_lynne
+    - device_tracker.life360_sally
+    - device_tracker.phone_greg_s_iphone_8_plus
+    - device_tracker.phone_jenny_siphone7plus
+    - device_tracker.phone_lynne_snokia2_1
+    - device_tracker.phone_sally_snokia7plus
+
+temperature:
+  name: Temperatures
+  entities:
+    - sensor.outside_temperature
+    - sensor.lounge_temperature
+    - sensor.main_bedroom_temperature
+    - sensor.nursery_temperature
+    - sensor.flat_bedroom_temperature
+    - sensor.pool_temperature
+
+humidity:
+  name: Humidity
+  entities:
+    - sensor.outside_humidity
+    - sensor.lounge_humidity
+    - sensor.main_bedroom_humidity
+    - sensor.nursery_humidity
+    - sensor.flat_bedroom_humidity
+
+weather:
+  name: Weather
+  entities:
+    - sun.sun
+    - weather.dark_sky
+    
+openings:
+  name: Openings
+  entities:
+    - binary_sensor.driveway_gate
+
+
+ubuntu:
+  name: Ubuntu Server
+  entities:
+    - sensor.processor_use
+    - sensor.hassserver_cpu_temp
+    - sensor.memory_use_percent
+    - sensor.disk_use_percent
+    - sensor.last_boot
+
+speed_test:
+  name: Speed Test
+  entities:
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.speedtest_ping
+
+hassio: 
+  name: Hassio
+  entities:
+    - sensor.version_current
+    - sensor.version_available
+    - sensor.custom_card_tracker
+    - sensor.custom_component_tracker
+    - sensor.custom_python_script_tracker
+
+date/time:
+  name: Time \ Date
+  entities:
+    - sensor.time
+    - sensor.date
+
+kitchenpi:
+  name: Kitchen Pi
+  entities:
+    - sensor.kitchen_pi_cpu_used
+    - sensor.kitchen_pi_ram_used
+    - sensor.kitchen_pi_disk_used
+
+logicircle:
+  name: Logitech Circle
+  entities:
+    - camera.baby_cam
+    - sensor.logi_circle_nursery_battery
+    - sensor.logi_circle_nursery_wifi_signal_strength
+    - sensor.logi_circle_nursery_privacy_mode
+    - sensor.logi_circle_nursery_streaming_mode
+
+USABnzbd:
+  name: USABnzbd
+  entities:
+    - sensor.usabnzbd_status
+    - sensor.usabnzbd_queue_count
+    - sensor.usabnzbd_speed
+    - sensor.usabnzbd_daily_total
+    - sensor.usabnzbd_weekly_total
+    - sensor.usabnzbd_monthly_total
+    - sensor.usabnzbd_total
+
+Mobile_App_Gregs_Iphone_8_Plus:
+  name: Greg's iPhone 8 Plus
+  entities:
+    - device_tracker.gregs_iphone_8_plus
+    - sensor.activity
+    - sensor.average_active_pace
+    - sensor.battery_level
+    - sensor.battery_state
+    - sensor.bssid
+    - sensor.connection_type
+    - sensor.distance
+    - sensor.floors_ascended
+    - sensor.floors_descended
+    - sensor.geocoded_location
+    - sensor.last_update_trigger
+    - sensor.sim_1
+    - sensor.ssid
+    - sensor.steps
+    
+google_drive_snaphots:
+  name: Google Drive Snapshot Backup
+  entities:
+    - binary_sensor.snapshots_stale
+    - sensor.snapshot_backup
+
+unifi_sensors:
+  name: Unifi Gateway
+  entities:
+    - sensor.unifi_gateway_alerts
+    - sensor.unifi_gateway_firmware_upgradable
+    - sensor.unifi_gateway_lan
+    - sensor.unifi_gateway_wan
+    - sensor.unifi_gateway_wlan
+    - sensor.unifi_gateway_www
+    - sensor.unifi_gateway_vpn
+    
+logi_circle_camera:
+  name: Logi Circle Nursery
+  entities:
+    - sensor.nursery_battery
+    - sensor.nursery_last_activity
+    - sensor.nursery_recording_mode
+    - sensor.nursery_streaming_mode
+    - sensor.nursery_wifi_signal_category
+    - sensor.nursery_wifi_signal_strength
+
+### Views (TABS)

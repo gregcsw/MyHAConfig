@@ -1,0 +1,18 @@
+# The HomeKit component allows you to forward entities from Home Assistant
+# to Apple HomeKit, so they can be controlled from Apple’s Home app and Siri.
+#
+# https://www.home-assistant.io/components/homekit
+#
+homekit:
+  filter:
+    exclude_domains:
+      - automation
+      - device_tracker
+      - person
+      - script
+    exclude_entities:
+      - climate.outside_temp
+      - climate.pool_temp
+      - input_boolean.fake_heater
+      - binary_sensor.remote_ui
+

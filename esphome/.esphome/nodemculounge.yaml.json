@@ -1,0 +1,26 @@
+{
+  "arduino_version": "espressif8266@1.8.0", 
+  "address": "nodemculounge.local", 
+  "storage_version": 1, 
+  "esphome_version": "1.13.6", 
+  "build_path": "/config/esphome/nodemculounge", 
+  "name": "nodemculounge", 
+  "loaded_integrations": [
+    "api", 
+    "binary_sensor", 
+    "dht", 
+    "esphome", 
+    "gpio", 
+    "logger", 
+    "network", 
+    "ota", 
+    "sensor", 
+    "switch", 
+    "template", 
+    "wifi"
+  ], 
+  "firmware_bin_path": "/data/nodemculounge/.pioenvs/nodemculounge/firmware.bin", 
+  "board": "nodemcuv2", 
+  "esp_platform": "ESP8266", 
+  "src_version": 1
+}

@@ -1,0 +1,4 @@
+light.nursery_lamp:
+  name: Nursery Lamp
+  expose: true
+  room: Nursery

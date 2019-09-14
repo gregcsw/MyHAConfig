@@ -1,0 +1,9 @@
+light.all_outside_lights:
+  name: All Outside Lights
+  expose: true
+  aliases:
+      - All Outside Lights
+      - Outside Lights
+      - Garden Lights
+      - Driveway Lights
+  room: Outside

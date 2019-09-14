@@ -1,0 +1,7 @@
+switch.flat_bedroom_heater:
+  name: Flat Bedroom Heater
+  expose: true
+  aliases:
+    - Flat Heater
+    - Sally's Heater
+  room: Flat

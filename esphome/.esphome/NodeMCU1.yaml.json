@@ -1,0 +1,17 @@
+{
+  "use_legacy_ota": false, 
+  "arduino_version": "espressif8266@1.8.0", 
+  "address": "nodemcu1.local", 
+  "storage_version": 1, 
+  "esphome_version": "1.12.2", 
+  "build_path": "/config/esphome/nodemcu1", 
+  "name": "nodemcu1", 
+  "firmware_bin_path": "/data/nodemcu1/.pioenvs/nodemcu1/firmware.bin", 
+  "esphome_core_version": {
+    "tag": "v1.12.2", 
+    "repository": "https://github.com/esphome/esphome-core.git"
+  }, 
+  "board": "nodemcuv2", 
+  "esp_platform": "ESP8266", 
+  "src_version": 1
+}

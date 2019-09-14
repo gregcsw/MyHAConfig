@@ -1,0 +1,7 @@
+switch.led_master:
+  name: LED Master
+  expose: true
+  aliases:
+    - LED's
+    - LED Power
+  room: Lounge

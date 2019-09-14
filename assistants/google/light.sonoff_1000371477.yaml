@@ -1,0 +1,6 @@
+light.sonoff_1000371477:
+  name: Nursery Night Light
+  expose: true
+  aliases:
+    - Night Light
+  room: Nursery

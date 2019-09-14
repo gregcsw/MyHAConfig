@@ -1,0 +1,34 @@
+# The recorder component is storing details in a database which
+# then are handled by the history component.
+#
+# https://www.home-assistant.io/components/recorder/
+#
+recorder:
+  # The number of days of history to keep in the recorder database
+  purge_keep_days: 14
+
+  # How often (in days) the purge task runs
+  purge_interval: 7
+
+  exclude:
+    domains:
+      - automation
+      - calendar
+    entities:
+      - switch.amp_mode_bddvd
+      - switch.amp_mode_game
+      - switch.amp_mode_sat_catv
+      - switch.amp_muting
+      - switch.amp_power
+      - switch.amp_sound_gaming
+      - switch.amp_sound_movie
+      - switch.amp_sound_music
+      - switch.tv_input
+      - switch.tv_input
+      - switch.tv_volume
+      - switch.tv_power
+      - switch.wall_heater_1000w
+      - switch.wall_heater_2000w
+      - switch.wall_heater_power
+      - switch.wall_heater_swing
+      - switch.wall_heater_timer

@@ -1,0 +1,105 @@
+  - alias: "LED Effect Dining Room "
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_select.Dining_Room_LED_Effect
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/DiningRoomLED/seteffect"
+          payload: '{{ trigger.to_state.state | string }}'
+  - alias: "LED Effect TV"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_select.TV_LED_Effect
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/TVLED/seteffect"
+          payload: '{{ trigger.to_state.state | string }}'
+  - alias: "LED Effect Lounge"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_select.Lounge_LED_Effect
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/LoungeLED/seteffect"
+          payload: '{{ trigger.to_state.state | string }}'
+  - alias: "LED Effect All"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_select.All_LED_Effect
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/DiningRoomLED/seteffect"
+          payload: '{{ trigger.to_state.state | string }}'
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/TVLED/seteffect"
+          payload: '{{ trigger.to_state.state | string }}'
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/LoungeLED/seteffect"
+          payload: '{{ trigger.to_state.state | string }}'
+
+  - alias: "Animation Speed All"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_number.all_animation_speed
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/DiningRoomLED/setanimationspeed"
+          payload: '{{ trigger.to_state.state | int }}'
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/TVLED/setanimationspeed"
+          payload: '{{ trigger.to_state.state | int }}'
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/LoungeLED/setanimationspeed"
+          payload: '{{ trigger.to_state.state | int }}'
+  - alias: "Animation Speed Dining Room"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_number.dining_room_animation_speed
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/DiningRoomLED/setanimationspeed"
+          payload: '{{ trigger.to_state.state | int }}'
+  - alias: "Animation Speed TV"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_number.tv_animation_speed
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/TVLED/setanimationspeed"
+          payload: '{{ trigger.to_state.state | int }}'
+  - alias: "Animation Speed Lounge"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: input_number.lounge_animation_speed
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: "bruh/LoungeLED/setanimationspeed"
+          payload: '{{ trigger.to_state.state | int }}'

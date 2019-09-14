@@ -1,0 +1,9 @@
+# Driveway Gate Camera (Raysharp RS-CH581H3W-28PW) stills from MotionEye
+# Stream direct from Camera
+platform: generic
+name: Driveway Gate
+still_image_url: http://192.168.1.80:8765/picture/1/current/?_username=admin&_signature=e49a22e8a01dad747b4bd73e50a29be894f341bf
+stream_source: http://192.168.1.80:8765/picture/1/frame/
+username: admin
+password: !secret motioneye-password
+authentication: basic

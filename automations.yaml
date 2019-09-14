@@ -1,0 +1,468 @@
+- id: '1'
+  alias: Outside lights ON if gates opens at night
+  trigger:
+  - entity_id: binary_sensor.driveway_gate
+    platform: state
+    to: 'on'
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  action:
+  - data:
+      entity_id: light.all_outside_lights
+    entity_id:
+    - light.all_outside_lights
+    service: light.turn_on
+  initial_state: true
+- id: '2'
+  alias: Outside Lights on if ANY outside light is turned ON
+  trigger:
+  - entity_id: light.outside_driveway_lights
+    platform: state
+    to: 'on'
+  - entity_id: light.outside_cottage_back_door_light
+    platform: state
+    to: 'on'
+  - entity_id: light.outside_cottage_front_stoep
+    platform: state
+    to: 'on'
+  - entity_id: light.outside_flat_backdoor_light
+    platform: state
+    to: 'on'
+  - entity_id: light.outside_play_area_lights
+    platform: state
+    to: 'on'
+  - entity_id: light.outside_house_flood_light
+    platform: state
+    to: 'on'
+  - entity_id: light.outside_carport_light
+    platform: state
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - data:
+      entity_id: light.all_outside_lights
+    service: light.turn_on
+  initial_state: true
+- id: '3'
+  alias: Outside lights OFF after 10 minutes
+  trigger:
+  - entity_id: light.all_outside_lights
+    platform: state
+    to: 'on'
+  action:
+  - delay: 00:10:00
+  - data:
+      entity_id: light.all_outside_lights
+    service: light.turn_off
+  initial_state: true
+- id: '4'
+  alias: Turn outside lights off if HA Starts
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - delay: 00:01:00
+  - data:
+      entity_id: light.all_outside_lights
+    service: light.turn_off
+  initial_state: true
+- id: '5'
+  alias: Hassio Upgrade Alert
+  trigger:
+    platform: state
+    entity_id: sensor.version_available
+  condition:
+  - condition: template
+    value_template: "{{\n  states('sensor.version_available')\n  !=\n  states('sensor.version_current')\n\
+      }}"
+  action:
+  - service: notify.mobile_app_gregs_iphone_8_plus
+    data_template:
+      title: Hassio Upgrade
+      message: There is a Home Assistant upgrade for Hass.io pending! Version {{ states('sensor.version_available')
+        }} just got released!
+      data:
+        attachment:
+          content-type: png
+          url: https://png2.kisspng.com/20180504/avq/kisspng-computer-icons-starburst-clip-art-the-store-to-upgrade-kuangshuai-5aecf79d6760f6.2104595515254793254235.png
+  - service: persistent_notification.create
+    data_template:
+      title: Hassio Upgrade
+      message: There is a Home Assistant upgrade for Hass.io pending! Version {{ states('sensor.version_available')
+        }} just got released!
+      notification_id: hassio_upgrade
+  initial_state: true
+- id: '8'
+  alias: Notify Greg when Drive Gate is Opened
+  trigger:
+    platform: state
+    entity_id: binary_sensor.driveway_gate
+    to: 'on'
+  action:
+  - service: notify.mobile_app_gregs_iphone_8_plus
+    data:
+      message: Driveway Gate is OPEN
+      data:
+        attachement:
+          content_type: jpeg
+        push:
+          category: CAMERA
+        entity_id: camera.driveway_gate
+  initial_state: true
+- id: '9'
+  alias: Notify Greg when Drive Gate is Closed
+  trigger:
+    platform: state
+    entity_id: binary_sensor.driveway_gate
+    from: 'on'
+    to: 'off'
+  action:
+  - service: notify.mobile_app_gregs_iphone_8_plus
+    data:
+      message: Drive Gate has CLOSED
+      data:
+        attachement:
+          content_type: jpeg
+        push:
+          category: CAMERA
+        entity_id: camera.driveway_gate
+  initial_state: true
+- id: '10'
+  alias: Pool Pump ON 1 hours after sunrise
+  trigger:
+  - event: sunrise
+    offset: 01:00:00
+    platform: sun
+  action:
+  - data:
+      entity_id: switch.pool_pump
+    entity_id:
+    - switch.pool_pump
+    service: switch.turn_on
+  initial_state: true
+- id: '11'
+  alias: Pool Pump OFF 1 1/2  hour before Sunset
+  trigger:
+  - event: sunset
+    offset: -01:30:00
+    platform: sun
+  action:
+  - data:
+      entity_id: switch.pool_pump
+    entity_id:
+    - switch.pool_pump
+    service: switch.turn_off
+  initial_state: true
+- id: '12'
+  alias: Turn pool off if power comes on after 4pm
+  initial_state: true
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition:
+  - after: '16:00'
+    before: 07:00
+    condition: time
+  action:
+  - data:
+      entity_id: switch.pool_pump
+    service: switch.turn_off
+- id: OL1a
+  alias: Turn ON all outside lights
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_ON_OUTSIDE_LIGHTS
+  action:
+    service: light.turn_on
+    entity_id: light.all_outside_lights
+- id: OL1b
+  alias: Turn OFF all outside lights
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_OFF_OUTSIDE_LIGHTS
+  action:
+    service: light.turn_off
+    entity_id: light.all_outside_lights
+- id: OL1c
+  alias: Toggle All Outside Lights
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TOGGLE_OUTSIDE_LIGHTS
+  action:
+    service: light.toggle
+    entity_id: light.all_outside_lights
+- id: '15'
+  alias: Open/Close Driveway Gate
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: OPEN_CLOSE_DRIVEWAY_GATE
+  action:
+    service: switch.toggle
+    entity_id: switch.gate_remote
+- id: '16'
+  alias: Nursery Night Light Bed Time (Pink)
+  initial_state: true
+  trigger:
+    platform: time
+    at: '20:00:00'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 255
+  - delay: 00:30:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 230
+  - delay: 00:05:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 205
+  - delay: 00:05:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 180
+  - delay: 00:05:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 155
+  - delay: 00:05:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 130
+  - delay: 00:05:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 105
+  - delay: 00:05:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 80
+  - delay: 00:05:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 55
+  - delay: 00:05:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 30
+  - delay: 00:05:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 255
+      - 0
+      - 127
+      brightness: 15
+- id: '18'
+  alias: Nursery Night Light Get Up Time (Green)
+  initial_state: true
+  trigger:
+    platform: time
+    at: 07:00:00
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 0
+      - 255
+      - 0
+      brightness: 15
+  - delay: 00:10:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 0
+      - 255
+      - 0
+      brightness: 100
+  - delay: 00:10:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      rgb_color:
+      - 0
+      - 255
+      - 0
+      brightness: 255
+  - delay: 00:30:00
+  - service: light.turn_on
+    data:
+      entity_id: light.sonoff_1000371477
+      color_temp: 500
+      brightness: 255
+  - delay: 00:00:05
+  - service: light.turn_off
+    data:
+      entity_id: light.sonoff_1000371477
+- id: '20'
+  alias: Actionable Notification When Arriving Home
+  initial_state: true
+  trigger:
+    platform: numeric_state
+    entity_id: proximity.home
+    below: 400
+  condition:
+    condition: and
+    conditions:
+    - condition: template
+      value_template: '{{ states.proximity.home.attributes.dir_of_travel == "towards"
+        }}'
+    - condition: state
+      entity_id: device_tracker.life360_jenny
+      state: moving
+  action:
+    service: notify.ios_greg_s_iphone_8_plus
+    data:
+      message: Approaching Home
+      data:
+        push:
+          category: ARRIVING_HOME
+- alias: Set theme at startup
+  initial_state: 'on'
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+    service: frontend.set_theme
+    data:
+      name: midnight-blue-round
+  id: 2d815f9fa1ec4892b84c13dc8f4c7ecf
+- id: '1559979152490'
+  alias: Outside Lights Off when leaving
+  trigger:
+  - entity_id: device_tracker.life360_jenny
+    from: home
+    platform: state
+  - entity_id: device_tracker.life360_greg
+    from: home
+    platform: state
+  - entity_id: device_tracker.life360_sally
+    from: home
+    platform: state
+  condition: []
+  action:
+  - data:
+      entity_id: light.all_outside_lights
+    service: light.turn_off
+- id: '1559979304214'
+  alias: Turn OFF Flat Heater when Sally leaves in the morning
+  trigger:
+  - entity_id: device_tracker.life360_sally
+    from: home
+    platform: state
+  condition:
+  - after: 04:00
+    before: '16:00'
+    condition: time
+  action:
+  - data:
+      entity_id: switch.flat_bedroom_heater
+    service: switch.turn_off
+- id: '1562768151316'
+  alias: Oustide Lights ON if door is opened at night
+  trigger:
+  - entity_id: binary_sensor.front_door
+    platform: state
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - data:
+      entity_id: light.all_outside_lights
+    service: light.turn_on
+- id: '1564236894666'
+  alias: Outside Lights ON if Motion Detected
+  trigger:
+  - entity_id: binary_sensor.beams_1
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.beams_2
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.beams_3
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.beams_4
+    platform: state
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - data:
+      entity_id: light.all_outside_lights
+    service: light.turn_on

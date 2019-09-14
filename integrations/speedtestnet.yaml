@@ -1,0 +1,7 @@
+# The speedtestdotnet component uses the Speedtest.net web service 
+# to measure network bandwidth performance.
+
+# Enabling this component will automatically create the Speedtest.net 
+# Sensors for the monitored conditions (below).
+
+speedtestdotnet:

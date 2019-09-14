@@ -1,0 +1,22 @@
+{
+  "arduino_version": "espressif8266@1.8.0", 
+  "address": "nodemcumainbed.local", 
+  "storage_version": 1, 
+  "esphome_version": "1.13.6", 
+  "build_path": "/config/esphome/nodemcumainbed", 
+  "name": "nodemcumainbed", 
+  "loaded_integrations": [
+    "api", 
+    "dht", 
+    "esphome", 
+    "logger", 
+    "network", 
+    "ota", 
+    "sensor", 
+    "wifi"
+  ], 
+  "firmware_bin_path": "/data/nodemcumainbed/.pioenvs/nodemcumainbed/firmware.bin", 
+  "board": "nodemcuv2", 
+  "esp_platform": "ESP8266", 
+  "src_version": 1
+}

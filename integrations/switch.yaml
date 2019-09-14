@@ -1,0 +1,6 @@
+# https://www.home-assistant.io/components/switch/
+#
+# I stiil need to split lights into seperate files
+# switch: !include_dir_list ../entities/switches
+
+switch: !include ../switches.yaml

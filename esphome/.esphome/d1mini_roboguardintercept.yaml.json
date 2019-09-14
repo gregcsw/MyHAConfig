@@ -1,0 +1,23 @@
+{
+  "arduino_version": "espressif8266@1.8.0", 
+  "address": "d1mini_roboguardintercept.local", 
+  "storage_version": 1, 
+  "esphome_version": "1.13.6", 
+  "build_path": "/config/esphome/d1mini_roboguardintercept", 
+  "name": "d1mini_roboguardintercept", 
+  "loaded_integrations": [
+    "api", 
+    "binary_sensor", 
+    "esphome", 
+    "gpio", 
+    "logger", 
+    "network", 
+    "ota", 
+    "switch", 
+    "wifi"
+  ], 
+  "firmware_bin_path": "/data/d1mini_roboguardintercept/.pioenvs/d1mini_roboguardintercept/firmware.bin", 
+  "board": "d1_mini", 
+  "esp_platform": "ESP8266", 
+  "src_version": 1
+}

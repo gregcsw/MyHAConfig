@@ -1,0 +1,9 @@
+# Turn on Lounge Heater OFF using RM Mini IR transmitter
+
+lounge_heater_power:
+  alias: Lounge Heater Power (IR)
+  sequence:
+    service: broadlink.send
+    data:
+      host: 192.168.1.23
+      packet: JgBYAAABKZEVERURFREVERURFREVEBU0FjQVNBU0FTQVNBU0FTQWEBU0FhAVEhQRFREVERURFREVERU0FTQVNBU0FTQVNBU0FgAFBwABKkcVAAxBAAEqRxUADQU=

@@ -1,0 +1,29 @@
+---
+# I have 3 UniFi AP's on my property and a USG:
+#
+# I have a UniFi controller running 24/7 inside Hass.io,
+# using the Community Hass.io add-on.
+#
+# https://github.com/hassio-addons/addon-unifi
+# https://www.home-assistant.io/components/device_tracker.unifi/
+#
+platform: unifi
+
+# This is the Hass.io add-on slug, allowing a direct connection to the addon.
+host: a0d7b954-unifi
+
+# Since this is an internal connection, the SSL connection won't verify.
+# So lets ignore the fact that the cert is invalid for the above host.
+verify_ssl: false
+
+# Authentication credentials
+username: !secret unifi_user
+password: !secret unifi_password
+
+site_id: !secret unifi_site_id
+ssid_filter:
+  - SpannerNet
+
+new_device_defaults:
+  track_new_devices: true
+  hide_if_away: false

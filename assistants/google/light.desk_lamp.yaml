@@ -1,0 +1,8 @@
+light.desk_lamp:
+  name: Desk Lamp
+  expose: true
+  aliases:
+      - Desk Light
+      - Office Lamp
+      - Work Lamp
+  room: Lounge

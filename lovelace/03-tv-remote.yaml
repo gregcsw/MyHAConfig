@@ -1,0 +1,369 @@
+#################################
+#                               #
+#           TV REMOTE           #
+#                               #
+#################################
+
+title: TV & Amp
+id: tv_amp
+icon: mdi:television-box
+cards:
+
+  - type: vertical-stack
+    cards:
+    
+      - type: custom:button-card
+        color: black
+        color_type: label-card
+        name: Apple TV
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            color_type: blank-card
+
+          - type: "custom:button-card"
+            show_name: false
+            entity: script.apple_tv_up
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.apple_tv_up
+            icon: mdi:chevron-up-circle
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+            aspect_ratio: 1/1
+
+          - type: custom:button-card
+            color_type: blank-card
+
+      - type: horizontal-stack
+        cards:
+
+          - type: "custom:button-card"
+            show_name: false
+            entity: script.apple_tv_left
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.apple_tv_left
+            icon: mdi:chevron-left-circle
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+            aspect_ratio: 1/1
+
+          - type: "custom:button-card"
+            show_name: false
+            entity: script.apple_tv_select
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.apple_tv_select
+            icon: mdi:checkbox-blank-circle
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+            aspect_ratio: 1/1
+
+          - type: "custom:button-card"
+            show_name: false
+            entity: script.apple_tv_right
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.apple_tv_right
+            icon: mdi:chevron-right-circle
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+            aspect_ratio: 1/1
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            color_type: blank-card
+
+          - type: "custom:button-card"
+            show_name: false
+            entity: script.apple_tv_down
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.apple_tv_down
+            icon: mdi:chevron-down-circle
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+            aspect_ratio: 1/1
+            
+          - type: custom:button-card
+            color_type: blank-card
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            color_type: blank-card
+
+          - type: "custom:button-card"
+            name: MENU
+            entity: script.apple_tv_menu
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.apple_tv_menu
+            show_icon: false
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+            styles:
+              name:
+                - font-size: 24px
+                - font-weight: bold
+            aspect_ratio: 1/1
+
+          - type: "custom:button-card"
+            show_name: false
+            entity: script.apple_tv_top_menu
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.apple_tv_top_menu
+            icon: mdi:monitor
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+            aspect_ratio: 1/1
+
+          - type: custom:button-card
+            color_type: blank-card
+
+      - type: custom:button-card
+        color: black
+        color_type: label-card
+        name: Sony Amplifier
+      - type: horizontal-stack
+        cards:
+
+          - type: "custom:button-card"
+            name: Power (IR)
+            entity: script.sony_amp_power
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_power
+            icon: mdi:power
+            color_type: card
+            state:
+              - value: "off"
+                color: rgb(10, 130, 22)
+
+          - type: "custom:button-card"
+            name: Muting (IR)
+            entity: script.sony_amp_muting
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_muting
+            icon: mdi:volume-off
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+
+      - type: horizontal-stack
+        cards:
+
+          - type: "custom:button-card"
+            name: Volume Down (IR)
+            entity: script.sony_amp_volume_down
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_volume_down
+            icon: mdi:volume-minus
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+
+          - type: "custom:button-card"
+            name: Volume Up (IR)
+            entity: script.sony_amp_volume_up
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_volume_up
+            icon: mdi:volume-plus
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+
+      - type: custom:button-card
+        color: 2b2b2b
+        color_type: label-card
+        name: Input Selector
+
+      - type: horizontal-stack
+        cards:
+
+          - type: "custom:button-card"
+            name: Apple TV (IR)
+            entity: script.sony_amp_input_satcatv
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_input_satcatv
+            icon: mdi:apple
+            color_type: card
+            state:
+              - value: "off"
+                color: rgb(227, 232, 231)
+
+          - type: "custom:button-card"
+            name: BluRay (IR)
+            entity: script.sony_amp_input_bddvd
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_input_bddvd
+            icon: mdi:disc
+            color_type: card
+            state:
+              - value: "off"
+                color: rgb(227, 232, 231)
+
+          - type: "custom:button-card"
+            name: Game (IR)
+            entity: script.sony_amp_input_game
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_input_game
+            icon: mdi:xbox-controller
+            color_type: card
+            state:
+              - value: "off"
+                color: rgb(227, 232, 231)
+
+      - type: custom:button-card
+        color: 2b2b2b
+        color_type: label-card
+        name: Sound Field
+
+      - type: horizontal-stack
+        cards:
+        
+          - type: "custom:button-card"
+            name: Movie (IR)
+            entity: script.sony_amp_sound_field_movie
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_sound_field_movie
+            icon: mdi:movie
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+
+          - type: "custom:button-card"
+            name: Music (IR)
+            entity: script.sony_amp_sound_field_music
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_sound_field_music
+            icon: mdi:music
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+
+          - type: "custom:button-card"
+            name: Gaming (IR)
+            entity: script.sony_amp_sound_field_gaming
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_amp_sound_field_gaming
+            icon: mdi:gamepad-variant
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+
+      - type: custom:button-card
+        color: black
+        color_type: label-card
+        name: Sony TV
+
+      - type: horizontal-stack
+        cards:
+        
+          - type: "custom:button-card"
+            name: Power (IR)
+            entity: script.sony_tv_power
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_tv_power
+            icon: mdi:power
+            color_type: card
+            state:
+              - value: "off"
+                color: rgb(10, 130, 22)
+
+          - type: "custom:button-card"
+            name: Input (IR)
+            entity: script.sony_tv_input
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_tv_input
+            icon: mdi:exit-to-app
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+
+      - type: horizontal-stack
+        cards:
+
+          - type: "custom:button-card"
+            name: Volume Down (IR)
+            entity: script.sony_tv_volume_down
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_tv_volume_down
+            icon: mdi:volume-minus
+            color_type: card
+            state:
+              - value: "off"
+                color: black
+
+          - type: "custom:button-card"
+            name: Volume Up (IR)
+            entity: script.sony_tv_volume_up
+            action: service
+            service: script.turn_on
+            data:
+              entity_id: script.sony_tv_volume_up
+            icon: mdi:volume-plus
+            color_type: card
+            state:
+              - value: "off"
+                color: black 

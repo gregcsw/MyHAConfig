@@ -1,0 +1,57 @@
+esphome:
+  name: nurseryheater_sonoffth16
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid_not
+  password: !secret wifi_password_not
+  fast_connect: true
+  # Enable fast_connect for hidden wifi networks
+  ap:
+    ssid: sonoffth16-3
+    password: !secret esphomepass
+    
+# Enable logging
+logger:
+  level: debug
+
+# Enable Home Assistant API
+api:
+  password: !secret esphomepass
+
+ota:
+  password: !secret esphomepass
+  
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    id: button
+    on_press:
+      - switch.toggle: relay
+
+switch:
+  - platform: gpio
+    name: "Nursery Heater"
+    pin: GPIO12
+    id: relay
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: yes
+
+# sensor:
+#   - platform: dht
+#     model: DHT22
+#     pin: GPIO14
+#     temperature:
+#       name: "Nursery Heater Temperature"
+#       accuracy_decimals: 0
+#     humidity:
+#       name: "Nursery Heater Humidity"
+#       accuracy_decimals: 0
+#     update_interval: 60s

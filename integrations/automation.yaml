@@ -1,0 +1,7 @@
+# https://www.home-assistant.io/docs/automation/
+
+# Still need to split this file into seperate files for each automation
+
+# automation: !include_dir_list ../automations
+
+automation: !include ../automations.yaml

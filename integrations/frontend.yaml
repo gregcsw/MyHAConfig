@@ -1,0 +1,19 @@
+# Configures the official Home Assistant frontend.
+#
+# https://www.home-assistant.io/components/frontend/
+#
+frontend:
+  # enable latest js for lovelaceui
+  javascript_version: latest
+
+  themes: !include_dir_merge_named ../themes
+  
+  # Add Font Awesome
+  # to get a solid heart, use fas:heart
+  # to get a heart outline, use far:heart
+  # to get the twitter symbo, use fab:twitter
+  # https://github.com/thomasloven/hass-fontawesome
+  extra_html_url:
+    - /local/hass-fontawesome-solid.html
+    - /local/hass-fontawesome-regular.html
+    - /local/hass-fontawesome-brands.html

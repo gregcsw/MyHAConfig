@@ -1,0 +1,15 @@
+#TVLEDNew
+platform: mqtt
+name: "TV LED"
+command_topic: "bruh/TVLED/setpower"
+state_topic: "bruh/TVLED/setpowerpub"
+rgb_state_topic: "bruh/TVLED/setcolorpub"
+rgb_command_topic: "bruh/TVLED/setcolor"
+brightness_state_topic: "bruh/TVLED/setbrightnesspub"
+brightness_command_topic: "bruh/TVLED/setbrightness"
+optimistic: false
+availability_topic: "tele/LEDMasterSwitch/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"

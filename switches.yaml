@@ -1,0 +1,11 @@
+# #BroadlinkRMMini3
+  - platform: broadlink
+    host: 192.168.1.23
+    mac: '78:0f:77:47:bf:31'
+# Changed Broadlink from Switches to Scripts.
+#     switches:
+# ######## SONY BRAVIA TV IN LOUNGE  ##########
+#         tv_input:
+#         friendly_name: "TV Input"
+#         command_on: 'JgBwAFESKREWEikRFhIVEikSFhEpEhYRFhEWEhUAA0tQEioRFhIpERYSFBMpEhUSKBMUExUSFhEVAANMUREpEhYRKRIWERYRKhEWESoRFhEWEhUSFgADSlESKREWEikSFRIWESkSFhEpEhYRFhEWEhUADQUAAAAAAAAAAA=='
+#         command_off: 'JgBwAFESKREWEikRFhIVEikSFhEpEhYRFhEWEhUAA0tQEioRFhIpERYSFBMpEhUSKBMUExUSFhEVAANMUREpEhYRKRIWERYRKhEWESoRFhEWEhUSFgADSlESKREWEikSFRIWESkSFhEpEhYRFhEWEhUADQUAAAAAAAAAAA=='

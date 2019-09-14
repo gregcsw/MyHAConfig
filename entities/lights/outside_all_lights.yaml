@@ -1,0 +1,11 @@
+# All Outside Lights
+platform: group
+name: All Outside Lights
+entities:
+  - light.outside_driveway_lights
+  - light.outside_flat_back_door_light
+  - light.outside_play_area_lights
+  - light.outside_cottage_front_stoep_light
+  - light.outside_cottage_back_door_light
+  - light.outside_house_floodlight
+  - light.outside_carport_light

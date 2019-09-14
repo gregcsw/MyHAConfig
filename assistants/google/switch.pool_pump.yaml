@@ -1,0 +1,7 @@
+switch.pool_pump:
+  name: Pool Pump
+  expose: true
+  aliases:
+    - Pool
+    - Pump
+  room: Outside

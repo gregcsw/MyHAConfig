@@ -1,0 +1,4 @@
+light.lounge_lamp:
+  name: Lounge Lamp
+  expose: true
+  room: Lounge

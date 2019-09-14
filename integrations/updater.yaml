@@ -1,0 +1,14 @@
+# The updater component will check daily for new releases.
+# It will show a badge in the frontend if a new version is found.
+
+# https://www.home-assistant.io/components/updater/
+
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+
+updater:
+
+  reporting: true
+  
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true

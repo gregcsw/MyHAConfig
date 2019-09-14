@@ -1,0 +1,9 @@
+# Sony TV Power Button using RM Mini IR transmitter
+
+sony_tv_power:
+  alias: Sony TV Power (IR)
+  sequence:
+    - service: broadlink.send
+      data:
+        host: 192.168.1.23
+        packet: JgCQAE4UJxQTFCcUExQnFBMUFBMoExQUExQTFBMAA01PEycUFBMoExQUJxMUFBMUJxQTFBMUFBMUAANNTxMoExQTKBMUEygTFRIVEikSFRIVExQTFQADSVMSKREWEikRFhIpERYSFRIpEhUSFhEWERYAAQQJAAI+UREpEhYRKhEWESoRFhEWEikRFhIVEhYRFgANBQAAAAAAAAAA

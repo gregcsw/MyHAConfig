@@ -1,0 +1,11 @@
+platform: mqtt
+name: "RF Switch 2-3"
+state_topic: "tele/sonoffrfbridge/RESULT"
+availability_topic: "tele/sonoffrfbridge/LWT"
+value_template: '{{value_json.RfReceived.Data}}'
+qos: 1
+payload_on: "780A92"
+payload_off: "780A92off"
+payload_available: "Online"
+payload_not_available: "Offline"
+off_delay: 0.2

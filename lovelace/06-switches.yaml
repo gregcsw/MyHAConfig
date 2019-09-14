@@ -1,0 +1,45 @@
+#################################
+#                               #
+#           SWITCHES            #
+#                               #
+#################################
+
+title: Switches
+id: switches
+icon: mdi:toggle-switch
+cards:
+
+  # - type: custom:monster-card
+  #   card:
+  #     type: entities
+  #     title: Switches
+  #   filter:
+  #     include:
+  #       - domain: switch
+  #         # state: "on"
+  #     exclude:
+  #       - entity_id: switch.gate_remote
+
+
+  - type: custom:monster-card
+    card:
+      type: custom:button-card
+      title: Switches
+      # template: homekit-button
+    filter:
+      include:
+        - domain: switch
+          # state: "on"
+      exclude:
+        - entity_id: switch.gate_remote
+
+  # - type: custom:monster-card
+  #   card:
+  #     type: entities
+  #     title: Switches that are OFF
+  #   filter:
+  #     include:
+  #       - domain: switch
+  #         state: "off"
+  #     exclude:
+  #       - entity_id: switch.gate_remote

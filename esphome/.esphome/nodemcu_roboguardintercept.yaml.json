@@ -1,0 +1,20 @@
+{
+  "arduino_version": "espressif8266@1.8.0", 
+  "address": "nodemcu_roboguardintercept.local", 
+  "storage_version": 1, 
+  "esphome_version": "1.13.6", 
+  "build_path": "/config/esphome/nodemcu_roboguardintercept", 
+  "name": "nodemcu_roboguardintercept", 
+  "loaded_integrations": [
+    "api", 
+    "esphome", 
+    "logger", 
+    "network", 
+    "ota", 
+    "wifi"
+  ], 
+  "firmware_bin_path": "/data/nodemcu_roboguardintercept/.pioenvs/nodemcu_roboguardintercept/firmware.bin", 
+  "board": "nodemcuv2", 
+  "esp_platform": "ESP8266", 
+  "src_version": 1
+}

@@ -1,0 +1,42 @@
+esphome:
+  name: ledmasterswitch_sonoffbasic
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid_not
+  password: !secret wifi_password_not
+  fast_connect: true
+  # Enable fast_connect for hidden wifi networks
+    
+# Enable logging
+logger:
+  level: debug
+
+# Enable Home Assistant API
+api:
+  password: !secret esphomepass
+
+ota:
+  password: !secret esphomepass
+  
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    id: button
+    on_press:
+      - switch.toggle: relay
+
+switch:
+  - platform: gpio
+    name: "LED Master"
+    pin: GPIO12
+    id: relay
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: yes

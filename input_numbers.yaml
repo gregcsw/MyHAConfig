@@ -1,0 +1,25 @@
+#Input number (speed) for LED Controls
+  all_animation_speed:
+    name: Animation Speed All
+    initial: 150
+    min: 1
+    max: 150
+    step: 10
+  dining_room_animation_speed:
+    name: Animation Speed Dining Room
+    initial: 150
+    min: 1
+    max: 150
+    step: 10
+  tv_animation_speed:
+    name: Animation Speed TV
+    initial: 150
+    min: 1
+    max: 150
+    step: 10
+  lounge_animation_speed:
+    name: Animation Speed Lounge
+    initial: 150
+    min: 1
+    max: 150
+    step: 10

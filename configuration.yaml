@@ -1,0 +1,42 @@
+homeassistant:
+
+  # Load packages
+  packages: !include_dir_named integrations
+
+  ################################################################################
+    
+  # Customization file
+  customize: !include customize.yaml
+
+# The person component allows to connect device tracker entities to one or more person entities.
+# https://www.home-assistant.io/components/person/
+person:
+
+# Fake Heater setup to send Temps to Google Home
+climate: 
+  - platform: generic_thermostat
+    name: Pool Temp
+    heater: input_boolean.fake_heater
+    target_sensor: sensor.pool_temperature
+  - platform: generic_thermostat
+    name: Outside Temp
+    heater: input_boolean.fake_heater
+    target_sensor: sensor.outside_temperature
+  - platform: generic_thermostat
+    name: Flat Bedroom Temp
+    heater: input_boolean.fake_heater
+    target_sensor: sensor.flat_bedroom_temperature
+
+# Fake Heater setup to send Temps to Google Home
+input_boolean:
+  fake_heater:
+    name: Fake Heater
+    initial: off
+
+# The HACS Integration allows you to easily install custom integration and cards
+# https://github.com/custom-components/hacs
+hacs:
+  token: !secret hacs_github_access_token
+  appdaemon: true
+  python_script: true
+  theme: true

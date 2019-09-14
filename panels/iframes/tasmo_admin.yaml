@@ -1,0 +1,9 @@
+# Adds an iframe panel to the Home Assistant frontend for the EPHome add-on.
+# This allows me to access ESPHome straight from Home Asssitant's UI
+#
+# https://www.home-assistant.io/components/panel_iframe/
+#
+tasmoadmin:
+  title: Tasmo Admin
+  icon: mdi:lightbulb-on
+  url: !secret panel_iframe_tasmo_admin_url

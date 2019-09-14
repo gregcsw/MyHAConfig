@@ -1,0 +1,7 @@
+light.tv_led:
+  name: TV LED
+  expose: true
+  aliases:
+      - TV LED
+      - TV Light
+  room: Lounge

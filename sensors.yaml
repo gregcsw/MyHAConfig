@@ -1,0 +1,61 @@
+ # Time/Date
+  - platform: time_date
+    display_options:
+      - time
+      - date
+  #Show CPU Temp of RPi
+#  - platform: command_line
+#    name: "Pi CPU Temp"
+#    command: "cat /sys/class/thermal/thermal_zone0/temp | awk '{print ($1*.001)}'"
+#    unit_of_measurement: "C"
+
+
+  - platform: systemmonitor
+    resources:
+      - type: memory_use_percent
+      - type: disk_use_percent
+        arg: /
+      - type: processor_use
+      - type: last_boot
+
+ # Hassio Version Sensors   
+  - platform: version
+    name: version_available
+    source: hassio
+
+  - platform: version
+    name: version_current
+
+  # Load Shedding Stage Sensor, Scrape for City Power Website (result SHEDDING = Stage 0)
+  - platform: scrape
+    name: "City Power Load Shedding Stage"
+    resource: https://www.citypower.co.za/customers/Pages/Load_Shedding.aspx
+    select: ".maindiv b"
+    scan_interval: 600
+
+
+  - platform: unifigateway
+    host: 192.168.1.10
+    site_id: !secret unifi_site_id
+    username: !secret unifi_user
+    password: !secret unifi_password
+
+
+# The seventeentrack sensor platform allows users to get package data tied to their 17track.net account. 
+# The platform creates both summary sensors, which show the number of packages in a current state (e.g., 
+# “In Transit”), as well as individual sensors for each package within the account.
+# https://www.home-assistant.io/components/seventeentrack/
+
+  - platform: seventeentrack
+    username: !secret 17track_email
+    password: !secret 17track_password
+
+
+# https://github.com/PiotrMachowski/Home-Assistant-custom-components-Google-Keep
+
+  - platform: google_keep
+    username: !secret google_keep.username
+    password: !secret google_keep.password
+    titles:
+      - 'Shopping List'
+    # pinned: true

@@ -1,0 +1,9 @@
+# Adds an iframe panel to the Home Assistant frontend for the EPHome add-on.
+# This allows me to access ESPHome straight from Home Asssitant's UI
+#
+# https://www.home-assistant.io/components/panel_iframe/
+#
+grafana:
+  title: Grafana
+  icon: mdi:chart-multiline
+  url: https://192.168.1.10:3000/?orgId=1

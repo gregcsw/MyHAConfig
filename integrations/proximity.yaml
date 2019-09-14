@@ -1,0 +1,12 @@
+# The proximity component allows you to monitor the proximity of devices 
+# to a particular zone and the direction of travel. The result is an 
+# entity created in Home Assistant which maintains the proximity data.
+# https://www.home-assistant.io/components/proximity/
+
+proximity:
+  home:
+    devices:
+
+      - person.jenny
+    tolerance: 50
+    unit_of_measurement: m
