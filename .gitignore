@@ -35,6 +35,7 @@ secrets.yaml
 www/images/*
 www/custom-lovelace
 custom_components
+www/tmp
 
 
 
