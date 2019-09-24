@@ -1,0 +1,23 @@
+{
+  "arduino_version": "espressif8266@1.8.0", 
+  "address": "tv_led_esp01s.local", 
+  "storage_version": 1, 
+  "esphome_version": "1.13.6", 
+  "build_path": "/config/esphome/tv_led_esp01s", 
+  "name": "tv_led_esp01s", 
+  "loaded_integrations": [
+    "api", 
+    "esphome", 
+    "fastled_base", 
+    "fastled_clockless", 
+    "light", 
+    "logger", 
+    "network", 
+    "ota", 
+    "wifi"
+  ], 
+  "firmware_bin_path": "/data/tv_led_esp01s/.pioenvs/tv_led_esp01s/firmware.bin", 
+  "board": "esp01_1m", 
+  "esp_platform": "ESP8266", 
+  "src_version": 1
+}

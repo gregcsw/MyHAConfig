@@ -11,12 +11,6 @@
     min: 1
     max: 150
     step: 10
-  tv_animation_speed:
-    name: Animation Speed TV
-    initial: 150
-    min: 1
-    max: 150
-    step: 10
   lounge_animation_speed:
     name: Animation Speed Lounge
     initial: 150
