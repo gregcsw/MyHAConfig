@@ -605,7 +605,7 @@
   },
   "node-red-contrib-influxdb": {
    "name": "node-red-contrib-influxdb",
-   "version": "0.3.0",
+   "version": "0.3.1",
    "local": false,
    "nodes": {
     "influxdb": {
@@ -944,7 +944,7 @@
   },
   "node-red-dashboard": {
    "name": "node-red-dashboard",
-   "version": "2.16.1",
+   "version": "2.16.2",
    "local": false,
    "nodes": {
     "ui_base": {
@@ -1178,7 +1178,7 @@
   },
   "node-red-node-email": {
    "name": "node-red-node-email",
-   "version": "1.6.2",
+   "version": "1.6.3",
    "local": false,
    "nodes": {
     "email": {
@@ -1315,7 +1315,7 @@
   },
   "node-red-node-serialport": {
    "name": "node-red-node-serialport",
-   "version": "0.8.3",
+   "version": "0.8.6",
    "local": false,
    "nodes": {
     "serialport": {
