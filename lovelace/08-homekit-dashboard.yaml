@@ -420,6 +420,11 @@ cards:
                   - type: "custom:button-card"
                     entity: light.sonoff_1000371477
                     template: homekit-button
+                    state:
+                      - value: 'on'
+                        color: auto 
+                    tap_action:
+                      action: more-info
               - type: horizontal-stack
                 cards:
                   - type: "custom:button-card"
@@ -431,6 +436,9 @@ cards:
                   - type: "custom:button-card"
                     entity: light.tv_led
                     template: homekit-button
+                    state:
+                      - value: 'on'
+                        color: auto 
               - type: horizontal-stack
                 cards:
                   - type: "custom:button-card"
@@ -442,11 +450,17 @@ cards:
                   - type: "custom:button-card"
                     entity: light.dining_room_led
                     template: homekit-button
+                    state:
+                      - value: 'on'
+                        color: auto 
               - type: horizontal-stack
                 cards:
                   - type: "custom:button-card"
                     entity: light.lounge_led
                     template: homekit-button
+                    state:
+                      - value: 'on'
+                        color: auto 
                   - type: custom:button-card
                     color_type: blank-card
                   - type: custom:button-card

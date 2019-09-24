@@ -40,6 +40,65 @@ cards:
               - entity: device_tracker.life360_sally
               - entity_picture_away: /local/images/Sally-Away.png
               - entity_picture_home: /local/images/Sally-Home.png
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: light.all_outside_lights
+            template: homekit-button
+            # icon: mdi:outdoor-lamp
+          - type: "custom:button-card"
+            entity: light.nursery_lamp
+            template: homekit-button
+          - type: "custom:button-card"
+            entity: light.sonoff_1000371477
+            template: homekit-button
+            state:
+              - value: 'on'
+                color: auto 
+            tap_action:
+              action: more-info
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: light.lounge_light
+            template: homekit-button
+          - type: "custom:button-card"
+            entity: light.lounge_lamp
+            template: homekit-button
+          - type: "custom:button-card"
+            entity: light.tv_led
+            template: homekit-button
+            state:
+              - value: 'on'
+                color: auto 
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: light.dining_room_light
+            template: homekit-button
+          - type: "custom:button-card"
+            entity: light.desk_lamp
+            template: homekit-button
+          - type: "custom:button-card"
+            entity: light.dining_room_led
+            template: homekit-button
+            state:
+              - value: 'on'
+                color: auto 
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: light.lounge_led
+            template: homekit-button
+            state:
+              - value: 'on'
+                color: auto 
+          - type: custom:button-card
+            color_type: blank-card
+          - type: custom:button-card
+            color_type: blank-card
+
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -56,6 +115,14 @@ cards:
             state:
               - value: 'on'
                 color: Red
+          - type: custom:button-card
+            entity: switch.pool_pump
+            template: homekit-button
+            state:
+              - value: 'on'
+                color: CornflowerBlue
+      - type: horizontal-stack
+        cards:
           - type: "custom:button-card"
             entity: binary_sensor.front_door
             template: homekit-button
@@ -64,14 +131,24 @@ cards:
               - value: 'on'
                 color: Red
                 icon: mdi:door-open
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            entity: switch.pool_pump
+          - type: "custom:button-card"
+            entity: binary_sensor.kitchen_door
             template: homekit-button
+            icon: mdi:door-closed
             state:
               - value: 'on'
-                color: CornflowerBlue
+                color: Red
+                icon: mdi:door-open
+          - type: "custom:button-card"
+            entity: binary_sensor.bedroom_french_door
+            template: homekit-button
+            icon: mdi:door-closed
+            state:
+              - value: 'on'
+                color: Red
+                icon: mdi:door-open
+      - type: horizontal-stack
+        cards:
           - type: "custom:button-card"
             entity: switch.nursery_heater
             template: homekit-button
@@ -84,53 +161,11 @@ cards:
             template: homekit-button
             state:
               - value: 'on'
-                color: Orange          
-      
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            entity: light.all_outside_lights
-            template: homekit-button
-            # icon: mdi:outdoor-lamp
-          - type: "custom:button-card"
-            entity: light.nursery_lamp
-            template: homekit-button
-          - type: "custom:button-card"
-            entity: light.sonoff_1000371477
-            template: homekit-button
-            tap_action:
-              action: more-info
-      - type: horizontal-stack
-        cards:
-          - type: "custom:button-card"
-            entity: light.lounge_light
-            template: homekit-button
-          - type: "custom:button-card"
-            entity: light.lounge_lamp
-            template: homekit-button
-          - type: "custom:button-card"
-            entity: light.tv_led
-            template: homekit-button
-      - type: horizontal-stack
-        cards:
-          - type: "custom:button-card"
-            entity: light.dining_room_light
-            template: homekit-button
-          - type: "custom:button-card"
-            entity: light.desk_lamp
-            template: homekit-button
-          - type: "custom:button-card"
-            entity: light.dining_room_led
-            template: homekit-button
-      - type: horizontal-stack
-        cards:
-          - type: "custom:button-card"
-            entity: light.lounge_led
-            template: homekit-button
+                color: Orange
           - type: custom:button-card
             color_type: blank-card
-          - type: custom:button-card
-            color_type: blank-card
+
+
 
       - break
 
