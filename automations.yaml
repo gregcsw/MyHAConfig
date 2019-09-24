@@ -1,20 +1,3 @@
-- id: '1'
-  alias: Outside lights ON if gates opens at night
-  trigger:
-  - entity_id: binary_sensor.driveway_gate
-    platform: state
-    to: 'on'
-  condition:
-  - after: sunset
-    before: sunrise
-    condition: sun
-  action:
-  - data:
-      entity_id: light.all_outside_lights
-    entity_id:
-    - light.all_outside_lights
-    service: light.turn_on
-  initial_state: true
 - id: '2'
   alias: Outside Lights on if ANY outside light is turned ON
   trigger:
@@ -72,72 +55,63 @@
       entity_id: light.all_outside_lights
     service: light.turn_off
   initial_state: true
-- id: '5'
-  alias: Hassio Upgrade Alert
+- id: 'UA1'
+  alias: system_upgrade_alert
   trigger:
     platform: state
     entity_id: sensor.version_available
   condition:
-  - condition: template
-    value_template: "{{\n  states('sensor.version_available')\n  !=\n  states('sensor.version_current')\n\
-      }}"
+    - condition: template
+      value_template: >-
+        {{
+          states('sensor.version_available')
+          !=
+          states('sensor.version_current')
+        }}
   action:
-  - service: notify.mobile_app_gregs_iphone_8_plus
-    data_template:
-      title: Hassio Upgrade
-      message: There is a Home Assistant upgrade for Hass.io pending! Version {{ states('sensor.version_available')
-        }} just got released!
-      data:
-        attachment:
-          content-type: png
-          url: https://png2.kisspng.com/20180504/avq/kisspng-computer-icons-starburst-clip-art-the-store-to-upgrade-kuangshuai-5aecf79d6760f6.2104595515254793254235.png
-  - service: persistent_notification.create
-    data_template:
-      title: Hassio Upgrade
-      message: There is a Home Assistant upgrade for Hass.io pending! Version {{ states('sensor.version_available')
-        }} just got released!
-      notification_id: hassio_upgrade
-  initial_state: true
-- id: '8'
-  alias: Notify Greg when Drive Gate is Opened
-  trigger:
-    platform: state
-    entity_id: binary_sensor.driveway_gate
-    to: 'on'
-  action:
-  - service: notify.mobile_app_gregs_iphone_8_plus
-    data:
-      message: Driveway Gate is OPEN
-      data:
-        attachement:
-          content_type: jpeg
-        push:
-          category: CAMERA
-        entity_id: camera.driveway_gate
-  initial_state: true
+    - service: notify.mobile_app_gregs_iphone_8_plus
+      data_template:
+        title: Upgrade time!
+        message: >-
+          There is a Home Assistant upgrade for Hass.io pending!
+          Version {{ states('sensor.version_available') }} just got released!
+          Version {{ states('sensor.version_current') }} is currently installed.
+        data:
+          attachment:
+            content-type: png
+            url: https://gcswhassio.duckdns.org/local/images/package-up.png
+    - service: persistent_notification.create
+      data_template:
+        title: Upgrade time!
+        message: >-
+          There is a Home Assistant upgrade for Hass.io pending!
+          Version {{ states('sensor.version_available') }} just got released!
+          Version {{ states('sensor.version_current') }} is currently installed.
+        notification_id: hassio_upgrade
 - id: '9'
   alias: Notify Greg when Drive Gate is Closed
   trigger:
-    platform: state
-    entity_id: binary_sensor.driveway_gate
+  - entity_id: binary_sensor.driveway_gate
+    for: 00:00:01
     from: 'on'
+    platform: state
     to: 'off'
   action:
-  - service: notify.mobile_app_gregs_iphone_8_plus
-    data:
-      message: Drive Gate has CLOSED
+  - data:
       data:
         attachement:
           content_type: jpeg
+        entity_id: camera.driveway_gate
         push:
           category: CAMERA
-        entity_id: camera.driveway_gate
+      message: Drive Gate has CLOSED
+    service: notify.mobile_app_gregs_iphone_8_plus
   initial_state: true
 - id: '10'
-  alias: Pool Pump ON 1 hours after sunrise
+  alias: Pool Pump ON
   trigger:
   - event: sunrise
-    offset: 01:00:00
+    offset: 02:00:00
     platform: sun
   action:
   - data:
@@ -147,7 +121,7 @@
     service: switch.turn_on
   initial_state: true
 - id: '11'
-  alias: Pool Pump OFF 1 1/2  hour before Sunset
+  alias: Pool Pump OFF
   trigger:
   - event: sunset
     offset: -01:30:00
@@ -388,7 +362,8 @@
       data:
         push:
           category: ARRIVING_HOME
-- alias: Set theme at startup
+- id: 2d815f9fa1ec4892b84c13dc8f4c7ecf
+  alias: Set theme at startup
   initial_state: 'on'
   trigger:
   - platform: homeassistant
@@ -397,7 +372,7 @@
     service: frontend.set_theme
     data:
       name: midnight-blue-round
-  id: 2d815f9fa1ec4892b84c13dc8f4c7ecf
+
 - id: '1559979152490'
   alias: Outside Lights Off when leaving
   trigger:
@@ -429,39 +404,39 @@
   - data:
       entity_id: switch.flat_bedroom_heater
     service: switch.turn_off
-- id: '1562768151316'
-  alias: Oustide Lights ON if door is opened at night
+# - id: '1564236894666'
+#   alias: Outside Lights ON if Motion Detected
+#   trigger:
+#   - entity_id: binary_sensor.beams_1
+#     platform: state
+#     to: 'on'
+#   - entity_id: binary_sensor.beams_2
+#     platform: state
+#     to: 'on'
+#   - entity_id: binary_sensor.beams_3
+#     platform: state
+#     to: 'on'
+#   - entity_id: binary_sensor.beams_4
+#     platform: state
+#     to: 'on'
+#   condition:
+#     condition: state
+#     entity_id: sun.sun
+#     state: below_horizon
+#   action:
+#   - data:
+#       entity_id: light.all_outside_lights
+#     service: light.turn_on
+- id: '1569040148498'
+  alias: Outside Lights on if Gate Opens at night
   trigger:
-  - entity_id: binary_sensor.front_door
+  - entity_id: binary_sensor.driveway_gate
     platform: state
     to: 'on'
   condition:
-    condition: state
-    entity_id: sun.sun
-    state: below_horizon
-  action:
-  - data:
-      entity_id: light.all_outside_lights
-    service: light.turn_on
-- id: '1564236894666'
-  alias: Outside Lights ON if Motion Detected
-  trigger:
-  - entity_id: binary_sensor.beams_1
-    platform: state
-    to: 'on'
-  - entity_id: binary_sensor.beams_2
-    platform: state
-    to: 'on'
-  - entity_id: binary_sensor.beams_3
-    platform: state
-    to: 'on'
-  - entity_id: binary_sensor.beams_4
-    platform: state
-    to: 'on'
-  condition:
-    condition: state
-    entity_id: sun.sun
-    state: below_horizon
+  - after: sunset
+    before: sunrise
+    condition: sun
   action:
   - data:
       entity_id: light.all_outside_lights
