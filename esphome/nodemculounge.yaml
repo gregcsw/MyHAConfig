@@ -47,9 +47,9 @@ binary_sensor:
   - platform: gpio
     pin: 
       number: D7
-    # filters:
-    #   - delayed_on: 3s
-    #   - delayed_off: 3s
+    filters:
+      - delayed_on: 1s
+      - delayed_off: 1s
     name: "Driveway Gate"
     device_class: garage_door
 
