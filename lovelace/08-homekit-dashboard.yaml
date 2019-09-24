@@ -9,8 +9,7 @@ id: dashboard
 icon: mdi:monitor-dashboard
 panel: true
 path: dashboard
-# background: "right/auto linear-gradient(23deg, rgba(211,211,211,1) 0%, rgba(223,223,223,1) 34%, rgba(255,255,255,1) 100%)"
-theme: nest
+
 cards:
 
   - type: custom:layout-card
@@ -358,6 +357,14 @@ cards:
                     state:
                       - value: 'on'
                         color: Red
+                  - type: custom:button-card
+                    entity: switch.pool_pump
+                    template: homekit-button
+                    state:
+                      - value: 'on'
+                        color: CornflowerBlue
+              - type: horizontal-stack
+                cards:
                   - type: "custom:button-card"
                     entity: binary_sensor.front_door
                     template: homekit-button
@@ -366,14 +373,24 @@ cards:
                       - value: 'on'
                         color: Red
                         icon: mdi:door-open
-              - type: horizontal-stack
-                cards:
-                  - type: custom:button-card
-                    entity: switch.pool_pump
+                  - type: "custom:button-card"
+                    entity: binary_sensor.kitchen_door
                     template: homekit-button
+                    icon: mdi:door-closed
                     state:
                       - value: 'on'
-                        color: CornflowerBlue
+                        color: Red
+                        icon: mdi:door-open
+                  - type: "custom:button-card"
+                    entity: binary_sensor.bedroom_french_door
+                    template: homekit-button
+                    icon: mdi:door-closed
+                    state:
+                      - value: 'on'
+                        color: Red
+                        icon: mdi:door-open
+              - type: horizontal-stack
+                cards:
                   - type: "custom:button-card"
                     entity: switch.nursery_heater
                     template: homekit-button
@@ -387,6 +404,8 @@ cards:
                     state:
                       - value: 'on'
                         color: Orange
+                  - type: custom:button-card
+                    color_type: blank-card
           - type: vertical-stack
             cards:
               - type: horizontal-stack
