@@ -23,3 +23,23 @@
     min: 1
     max: 150
     step: 10
+
+
+# Manual Meter Readings
+
+  electricty_meter_reading_property:
+    name: Electricity Meter Reading Property
+    mode: box
+    unit_of_measurement: kwh
+    min: 0
+    max: 999999
+    step: 1
+
+  electricty_meter_reading_cottage:
+    name: Electricity Meter Reading Cottage
+    mode: box
+    unit_of_measurement: kwh
+    min: 0
+    max: 9999999
+    step: 1
+    
