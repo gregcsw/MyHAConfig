@@ -1,5 +1,5 @@
 midnight-blue-round:
-  ha-card-border-radius: "20px"
+  ha-card-border-radius: "15px"
   primary-color: "#5294E2"
   accent-color: "#0099ff"
   dark-primary-color: "var(--accent-color)"
