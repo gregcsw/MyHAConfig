@@ -88,25 +88,6 @@
           Version {{ states('sensor.version_available') }} just got released!
           Version {{ states('sensor.version_current') }} is currently installed.
         notification_id: hassio_upgrade
-- id: '9'
-  alias: Notify Greg when Drive Gate is Closed
-  trigger:
-  - entity_id: binary_sensor.driveway_gate
-    for: 00:00:01
-    from: 'on'
-    platform: state
-    to: 'off'
-  action:
-  - data:
-      data:
-        attachement:
-          content_type: jpeg
-        entity_id: camera.driveway_gate
-        push:
-          category: CAMERA
-      message: Drive Gate has CLOSED
-    service: notify.mobile_app_gregs_iphone_8_plus
-  initial_state: true
 - id: '10'
   alias: Pool Pump ON
   trigger:
