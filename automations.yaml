@@ -362,16 +362,6 @@
       data:
         push:
           category: ARRIVING_HOME
-- id: 2d815f9fa1ec4892b84c13dc8f4c7ecf
-  alias: Set theme at startup
-  initial_state: 'on'
-  trigger:
-  - platform: homeassistant
-    event: start
-  action:
-    service: frontend.set_theme
-    data:
-      name: midnight-blue-round
 
 - id: '1559979152490'
   alias: Outside Lights Off when leaving

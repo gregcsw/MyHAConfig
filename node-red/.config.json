@@ -417,7 +417,7 @@
   },
   "node-red-contrib-cast": {
    "name": "node-red-contrib-cast",
-   "version": "0.2.9",
+   "version": "0.2.10",
    "local": false,
    "nodes": {
     "cast-to-client": {
@@ -1178,7 +1178,7 @@
   },
   "node-red-node-email": {
    "name": "node-red-node-email",
-   "version": "1.6.3",
+   "version": "1.7.0",
    "local": false,
    "nodes": {
     "email": {
