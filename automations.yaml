@@ -1,4 +1,4 @@
-- id: '2'
+- id: 'AllOutsideLightsOn'
   alias: Outside Lights on if ANY outside light is turned ON
   trigger:
   - entity_id: light.outside_driveway_lights
@@ -31,7 +31,7 @@
       entity_id: light.all_outside_lights
     service: light.turn_on
   initial_state: true
-- id: '3'
+- id: 'OutsideLightsOffAfter10min'
   alias: Outside lights OFF after 10 minutes
   trigger:
   - entity_id: light.all_outside_lights
@@ -43,7 +43,7 @@
       entity_id: light.all_outside_lights
     service: light.turn_off
   initial_state: true
-- id: '4'
+- id: 'OutsideLightsOffAfterRestart'
   alias: Turn outside lights off if HA Starts
   trigger:
   - event: start
@@ -55,7 +55,7 @@
       entity_id: light.all_outside_lights
     service: light.turn_off
   initial_state: true
-- id: 'UA1'
+- id: 'UpgradeAlert'
   alias: system_upgrade_alert
   trigger:
     platform: state
@@ -88,7 +88,7 @@
           Version {{ states('sensor.version_available') }} just got released!
           Version {{ states('sensor.version_current') }} is currently installed.
         notification_id: hassio_upgrade
-- id: '10'
+- id: 'PoolON'
   alias: Pool Pump ON
   trigger:
   - event: sunrise
@@ -101,7 +101,7 @@
     - switch.pool_pump
     service: switch.turn_on
   initial_state: true
-- id: '11'
+- id: 'PoolOFF'
   alias: Pool Pump OFF
   trigger:
   - event: sunset
@@ -114,7 +114,7 @@
     - switch.pool_pump
     service: switch.turn_off
   initial_state: true
-- id: '12'
+- id: 'PoolOFFAfterPowerFailure'
   alias: Turn pool off if power comes on after 4pm
   initial_state: true
   trigger:
@@ -128,7 +128,7 @@
   - data:
       entity_id: switch.pool_pump
     service: switch.turn_off
-- id: OL1a
+- id: 'MobileAppLightsOn'
   alias: Turn ON all outside lights
   initial_state: true
   trigger:
@@ -139,7 +139,7 @@
   action:
     service: light.turn_on
     entity_id: light.all_outside_lights
-- id: OL1b
+- id: 'MobileAppLightsOff'
   alias: Turn OFF all outside lights
   initial_state: true
   trigger:
@@ -150,7 +150,7 @@
   action:
     service: light.turn_off
     entity_id: light.all_outside_lights
-- id: OL1c
+- id: 'MobileAppLightsToggle'
   alias: Toggle All Outside Lights
   initial_state: true
   trigger:
@@ -161,7 +161,7 @@
   action:
     service: light.toggle
     entity_id: light.all_outside_lights
-- id: '15'
+- id: 'MobileAppLightsGate'
   alias: Open/Close Driveway Gate
   initial_state: true
   trigger:
@@ -172,7 +172,7 @@
   action:
     service: switch.toggle
     entity_id: switch.gate_remote
-- id: '16'
+- id: 'NurseryBedTime'
   alias: Nursery Night Light Bed Time (Pink)
   initial_state: true
   trigger:
@@ -277,7 +277,7 @@
       - 0
       - 127
       brightness: 15
-- id: '18'
+- id: 'NurseryWakeUp'
   alias: Nursery Night Light Get Up Time (Green)
   initial_state: true
   trigger:
@@ -344,7 +344,7 @@
         push:
           category: ARRIVING_HOME
 
-- id: '1559979152490'
+- id: 'OutsideLighstOffWhenLeaving'
   alias: Outside Lights Off when leaving
   trigger:
   - entity_id: device_tracker.life360_jenny
@@ -361,7 +361,7 @@
   - data:
       entity_id: light.all_outside_lights
     service: light.turn_off
-- id: '1559979304214'
+- id: 'FlatHeaterOffWhenSallyLeaves'
   alias: Turn OFF Flat Heater when Sally leaves in the morning
   trigger:
   - entity_id: device_tracker.life360_sally
@@ -375,7 +375,7 @@
   - data:
       entity_id: switch.flat_bedroom_heater
     service: switch.turn_off
-# - id: '1564236894666'
+# - id: 'OutsideLightsOnIfMotionDetected'
 #   alias: Outside Lights ON if Motion Detected
 #   trigger:
 #   - entity_id: binary_sensor.beams_1
@@ -398,7 +398,7 @@
 #   - data:
 #       entity_id: light.all_outside_lights
 #     service: light.turn_on
-- id: '1569040148498'
+- id: 'OutsideLightsOnIfGateOpens'
   alias: Outside Lights on if Gate Opens at night
   trigger:
   - entity_id: binary_sensor.driveway_gate
