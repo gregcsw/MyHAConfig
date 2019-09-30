@@ -89,6 +89,7 @@ cards:
                 entity_id: fan.lounge_fan
                 speed: off
             icon: mdi:fan-off
+            color: CornflowerBlue
           - type: custom:button-card
             template: homekit-button
             name: Lounge Fan
@@ -100,6 +101,7 @@ cards:
                 entity_id: fan.lounge_fan
                 speed: low
             icon: mdi:numeric-1
+            color: CornflowerBlue
             state: 
               - operator: template
                 value: >
@@ -108,6 +110,7 @@ cards:
                     && (states['fan.lounge_fan'].attributes.speed === 'low')
                   ]]]
                 icon: mdi:fan
+                color: CornflowerBlue
                 spin: true
           - type: custom:button-card
             template: homekit-button
@@ -120,6 +123,7 @@ cards:
                 entity_id: fan.lounge_fan
                 speed: medium
             icon: mdi:numeric-2
+            color: CornflowerBlue
             state: 
               - operator: template
                 value: >
@@ -128,6 +132,7 @@ cards:
                     && (states['fan.lounge_fan'].attributes.speed === 'medium')
                   ]]]
                 icon: mdi:fan
+                color: CornflowerBlue
                 spin: true
           - type: custom:button-card
             template: homekit-button
@@ -140,6 +145,7 @@ cards:
                 entity_id: fan.lounge_fan
                 speed: high
             icon: mdi:numeric-3
+            color: CornflowerBlue
             state: 
               - operator: template
                 value: >
@@ -148,6 +154,7 @@ cards:
                     && (states['fan.lounge_fan'].attributes.speed === 'high')
                   ]]]
                 icon: mdi:fan
+                color: CornflowerBlue
                 spin: true
 
       - type: horizontal-stack
