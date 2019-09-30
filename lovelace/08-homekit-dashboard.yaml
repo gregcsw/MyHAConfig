@@ -422,6 +422,58 @@ cards:
                         color: Orange
                   - type: custom:button-card
                     color_type: blank-card
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    template: homekit-button
+                    name: Lounge Fan
+                    entity: fan.lounge_fan
+                    show_label: true
+                    tap_action:
+                      action: call-service
+                      service: fan.set_speed
+                      service_data:
+                        entity_id: fan.lounge_fan
+                        speed: off
+                    icon: mdi:fan-off    
+                    state: 
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.lounge_fan'].attributes
+                            && (states['fan.lounge_fan'].attributes.speed === 'low')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        spin: true
+                        label: Low           
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.lounge_fan'].attributes
+                            && (states['fan.lounge_fan'].attributes.speed === 'medium')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        spin: true
+                        label: Medium
+                
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.lounge_fan'].attributes
+                            && (states['fan.lounge_fan'].attributes.speed === 'high')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        spin: true
+                        label: High
+                  - type: custom:button-card
+                    color_type: blank-card
+                  - type: custom:button-card
+                    color_type: blank-card
+
           - type: vertical-stack
             cards:
               - type: horizontal-stack
@@ -471,16 +523,16 @@ cards:
                         color: auto 
               - type: horizontal-stack
                 cards:
+                  - type: custom:button-card
+                    color_type: blank-card
+                  - type: custom:button-card
+                    color_type: blank-card
                   - type: "custom:button-card"
                     entity: light.lounge_led
                     template: homekit-button
                     state:
                       - value: 'on'
                         color: auto 
-                  - type: custom:button-card
-                    color_type: blank-card
-                  - type: custom:button-card
-                    color_type: blank-card
 
       
 
