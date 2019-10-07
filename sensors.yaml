@@ -4,10 +4,16 @@
       - time
       - date
   #Show CPU Temp of RPi
-#  - platform: command_line
-#    name: "Pi CPU Temp"
-#    command: "cat /sys/class/thermal/thermal_zone0/temp | awk '{print ($1*.001)}'"
-#    unit_of_measurement: "C"
+  - platform: ssh
+    host: 192.168.1.94
+    unit_of_measurement: "°C"
+    name: Kitchen Pi Temp
+    username: !secret kitchen_pi_user
+    password: !secret kitchen_pi_password
+    command: cat /sys/class/thermal/thermal_zone0/temp
+    value_template: >-
+      {%- set line = value.split("\r\n") -%}
+      {{ (line[1]|int / 1000) | round(1) }}
 
 
   - platform: systemmonitor
