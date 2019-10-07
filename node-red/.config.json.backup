@@ -1402,13 +1402,30 @@
      "file": "/opt/node_modules/node-red-node-twitter/27-twitter.js"
     }
    }
+  },
+  "node-red-contrib-time-switch": {
+   "name": "node-red-contrib-time-switch",
+   "version": "1.0.4",
+   "local": false,
+   "nodes": {
+    "time-range-switch": {
+     "name": "time-range-switch",
+     "types": [
+      "time-switch"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-time-switch",
+     "file": "/config/node-red/node_modules/node-red-contrib-time-switch/index.js"
+    }
+   }
   }
  },
  "users": {
   "_": {
    "editor": {
     "view": {
-     "view-grid-size": 20,
+     "view-grid-size": "20",
      "view-node-status": true,
      "view-node-show-label": true,
      "view-show-tips": true,
@@ -1418,7 +1435,7 @@
    },
    "menu-deploymenu-item-flow": true,
    "menu-deploymenu-item-full": false,
-   "menu-menu-item-sidebar": false
+   "menu-menu-item-sidebar": true
   }
  }
 }
