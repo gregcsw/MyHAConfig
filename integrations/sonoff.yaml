@@ -6,6 +6,6 @@
 # my Sonoff B1 bulb is using this integrations, all other
 # Sonoffs run either Tasmota or ESPHome.
 
-sonoff:
-  username: !secret sonoff-user
-  password: !secret sonoff-pw
+# sonoff:
+#   username: !secret sonoff-user
+#   password: !secret sonoff-pw
