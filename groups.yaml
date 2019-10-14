@@ -50,6 +50,7 @@ openings:
     - binary_sensor.front_door
     - binary_sensor.kitchen_door
     - binary_sensor.bedroom_french_door
+    - binary_sensor.bottom_freezer_door
 
 
 
