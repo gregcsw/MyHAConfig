@@ -39,23 +39,11 @@
     select: ".maindiv b"
     scan_interval: 600
 
-
   - platform: unifigateway
     host: 192.168.1.10
     site_id: !secret unifi_site_id
     username: !secret unifi_user
     password: !secret unifi_password
-
-
-# The seventeentrack sensor platform allows users to get package data tied to their 17track.net account. 
-# The platform creates both summary sensors, which show the number of packages in a current state (e.g., 
-# “In Transit”), as well as individual sensors for each package within the account.
-# https://www.home-assistant.io/components/seventeentrack/
-
-  - platform: seventeentrack
-    username: !secret 17track_email
-    password: !secret 17track_password
-
 
 # https://github.com/PiotrMachowski/Home-Assistant-custom-components-Google-Keep
 

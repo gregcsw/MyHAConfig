@@ -109,25 +109,6 @@ cards:
             box-shadow: none;
           }
 
-      - type: 'custom:monster-card'
-        card:
-          type: entities
-          title: 17track.net
-          show_header_toggle: false
-        filter:
-          include:
-            - entity_id: sensor.seventeentrack_package_*
-        show_empty: false
-        style: |
-          ha-card {
-            background-color: rgba(0, 0, 0, 0);
-            -webkit-box-shadow: none;
-            -moz-box-shadow: none;
-            box-shadow: none;
-          }
-
-
-
       - break
 
       - type: custom:weather-card
