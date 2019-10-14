@@ -1,0 +1,85 @@
+esphome:
+  name: kitchenled_sonoffbasic
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid_not
+  password: !secret wifi_password_not
+  fast_connect: true
+  # Enable fast_connect for hidden wifi networks
+
+# Enable logging
+logger:
+  level: error
+
+# Enable Home Assistant API
+api:
+  password: !secret esphomepass
+
+ota:
+  password: !secret esphomepass
+  
+status_led:
+  pin:
+    number: GPIO13
+    inverted: yes
+
+sun:
+  latitude: -26.103456
+  longitude: 27.979101
+  
+time:
+  - platform: homeassistant
+
+binary_sensor:
+  - platform: gpio
+    id: button
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    on_press:
+      - light.toggle: kitchen_led
+      
+  - platform: gpio
+    id: pir_sensor
+    name: "Kitchen Motion"
+    pin:
+      number: GPIO1
+      mode: INPUT_PULLUP
+      # inverted: True
+    device_class: motion
+    on_press:
+      - then:
+          - if:
+              condition:
+                - sun.is_below_horizon:
+              then:
+                - light.turn_on: kitchen_led
+                - delay: 60s
+                - light.turn_off: kitchen_led
+              # else: 
+              #   - light.turn_off: kitchen_led
+      
+
+output:
+  - platform: gpio
+    id: relay
+    pin: GPIO12
+
+light:
+  - platform: binary
+    id: kitchen_led
+    name: "Kitchen LED"
+    output: relay
+    
+sensor:
+  - platform: dht
+    pin: GPIO3
+    temperature:
+      name: "Kitchen Temperature"
+    humidity:
+      name: "Kitchen Humidity"
+    model: AM2302
+    update_interval: 60s
