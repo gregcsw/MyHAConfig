@@ -31,12 +31,12 @@ resources:
     type: module
   - url: /community_plugin/monster-card/monster-card.js
     type: module
+  - url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
+    type: js
   - url: /local/theme-maker.js
     type: module
   - url: /community_plugin/unused-card/unused-card.js
     type: module
-  # - url: /local/custom-lovelace/weather-card/weather-card.js
-  #   type: module
   - url: /community_plugin/weather-card/weather-card.js
     type: module
 
