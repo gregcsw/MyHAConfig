@@ -57,11 +57,19 @@ binary_sensor:
                 - sun.is_below_horizon:
               then:
                 - light.turn_on: kitchen_led
-                - delay: 60s
-                - light.turn_off: kitchen_led
+                # - delay: 60s
+                # - light.turn_off: kitchen_led
               # else: 
               #   - light.turn_off: kitchen_led
-      
+  
+  - platform: template
+    id: pir_sensor_off
+    lambda: 'return id(pir_sensor).state;'
+    filters:
+      - delayed_off: 3min
+    on_release:
+      then:
+        - light.turn_off: kitchen_led
 
 output:
   - platform: gpio

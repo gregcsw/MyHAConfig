@@ -21,6 +21,7 @@
     "sensor", 
     "status_led", 
     "sun", 
+    "template", 
     "time", 
     "wifi"
   ], 
