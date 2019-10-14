@@ -12,4 +12,3 @@ payload_off: "Closed"
 payload_available: "Online"
 payload_not_available: "Offline"
 device_class: door
-

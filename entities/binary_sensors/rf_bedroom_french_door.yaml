@@ -2,12 +2,11 @@
 
 platform: mqtt
 name: "Bedroom French Door"
-state_topic: "tele/sonoffrfbridge/RESULT"
-value_template: '{{value_json.RfReceived.Data}}'
+state_topic: "RFBridge/bedfrenchdoor"
 availability_topic: "tele/sonoffrfbridge/LWT"
 qos: 1
-payload_on: "592F0A"
-payload_off: "592F0E"
+payload_on: "Open"
+payload_off: "Closed"
 payload_available: "Online"
 payload_not_available: "Offline"
 device_class: door
