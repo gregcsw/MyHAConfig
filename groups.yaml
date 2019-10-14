@@ -22,6 +22,7 @@ temperature:
     - sensor.lounge_temperature
     - sensor.main_bedroom_temperature
     - sensor.nursery_temperature
+    - sensor.kitchen_temperature
     - sensor.flat_bedroom_temperature
     - sensor.pool_temperature
 
@@ -32,6 +33,7 @@ humidity:
     - sensor.lounge_humidity
     - sensor.main_bedroom_humidity
     - sensor.nursery_humidity
+    - sensor.kitchen_humidity
     - sensor.flat_bedroom_humidity
 
 weather:
@@ -44,6 +46,11 @@ openings:
   name: Openings
   entities:
     - binary_sensor.driveway_gate
+    - binary_sensor.pool_gate
+    - binary_sensor.front_door
+    - binary_sensor.kitchen_door
+    - binary_sensor.bedroom_french_door
+
 
 
 ubuntu:
@@ -149,5 +156,27 @@ logi_circle_camera:
     - sensor.nursery_streaming_mode
     - sensor.nursery_wifi_signal_category
     - sensor.nursery_wifi_signal_strength
+
+buttons:
+  name: Buttons
+  entities:
+    - binary_sensor.rf_switch_1_1
+    - binary_sensor.rf_switch_1_2
+    - binary_sensor.rf_switch_1_3
+    - binary_sensor.rf_switch_2_1
+    - binary_sensor.rf_switch_2_2
+    - binary_sensor.rf_switch_2_3
+    - binary_sensor.lounge_light_switch_1
+    - binary_sensor.lounge_light_switch_2
+
+kitchen_pi:
+  name: Kitchen Pi
+  entities:
+    - sensor.kitchen_pi_temp
+
+motion:
+  name: Motion Sensors
+  entities:
+    - binary_sensor.kitchen_motion
 
 ### Views (TABS)
