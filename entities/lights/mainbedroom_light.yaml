@@ -1,0 +1,11 @@
+#MainBedroom - SonoffiFan03
+platform: mqtt
+scan_interval: 10
+name: "Main Bedroom Light"
+command_topic: "cmnd/SonoffiFan03-MainBedroom/POWER1"
+state_topic: "stat/SonoffiFan03-MainBedroom/POWER1"
+availability_topic: "tele/SonoffiFan03-MainBedroom/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
