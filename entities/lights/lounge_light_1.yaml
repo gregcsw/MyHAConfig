@@ -1,7 +1,7 @@
 #LoungeLightSonoffiFan02-gets power from Sonoff T1 in Lounge
 platform: mqtt
 scan_interval: 10
-name: "Lounge Light"
+name: "Lounge Light 1"
 command_topic: "cmnd/SonoffiFan02Lounge/POWER1"
 state_topic: "stat/SonoffiFan02Lounge/POWER1"
 availability_topic: "tele/SonoffiFan02Lounge/LWT"
@@ -9,4 +9,3 @@ payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"
 payload_off: "OFF"
-retain: false
