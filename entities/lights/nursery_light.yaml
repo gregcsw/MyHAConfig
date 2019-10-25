@@ -1,0 +1,11 @@
+#Nursery- SonoffiFan03
+platform: mqtt
+scan_interval: 10
+name: "Nursery Light"
+command_topic: "cmnd/SonoffiFan03-Nursery/POWER1"
+state_topic: "stat/SonoffiFan03-Nursery/POWER1"
+availability_topic: "tele/SonoffiFan03-Nursery/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
