@@ -1,0 +1,26 @@
+{
+  "arduino_version": "espressif8266@1.8.0", 
+  "address": "loungelightswitch2_sonofft1.local", 
+  "storage_version": 1, 
+  "esphome_version": "1.13.6", 
+  "build_path": "/config/esphome/loungelightswitch2_sonofft1", 
+  "name": "loungelightswitch2_sonofft1", 
+  "loaded_integrations": [
+    "api", 
+    "binary", 
+    "binary_sensor", 
+    "esphome", 
+    "gpio", 
+    "light", 
+    "logger", 
+    "network", 
+    "ota", 
+    "output", 
+    "switch", 
+    "wifi"
+  ], 
+  "firmware_bin_path": "/data/loungelightswitch2_sonofft1/.pioenvs/loungelightswitch2_sonofft1/firmware.bin", 
+  "board": "esp01_1m", 
+  "esp_platform": "ESP8266", 
+  "src_version": 1
+}

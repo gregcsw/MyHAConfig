@@ -1,0 +1,70 @@
+esphome:
+  name: loungelightswitch2_sonofft1
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid_not
+  password: !secret wifi_password_not
+  fast_connect: true
+  # Enable fast_connect for hidden wifi networks
+  ap:
+    ssid: loungelightswitch_sonofft1    
+    password: !secret esphomepass
+    
+# Enable logging
+logger:
+  level: debug
+
+# Enable Home Assistant API
+api:
+  password: !secret esphomepass
+
+ota:
+  password: !secret esphomepass
+  
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Lounge Light Switch 3"
+  - platform: gpio
+    pin:
+      number: GPIO9
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Lounge Light Switch 4"
+    on_press:
+      - light.toggle: outside_play_area_lights
+
+switch:
+  - platform: gpio
+    name: "Lounge Fan & Light 2"
+    pin: GPIO12
+    id: relay1
+    restore_mode: ALWAYS_ON
+
+
+output:
+  # Register the blue LED as a dimmable output ....
+  # - platform: esp8266_pwm
+  #   id: blue_led
+  #   pin: GPIO13
+  #   inverted: True
+  - platform: gpio
+    # name: "Outside Play Area Lights"
+    pin: GPIO5
+    id: relay2
+
+light:
+  # ... and then make a light out of it.
+  # - platform: monochromatic
+  #   name: "Sonoff T1 UK 3 Gang Blue LED"
+  #   output: blue_led
+  
+  - platform: binary
+    id: outside_play_area_lights
+    name: "Outside Play Area Lights"
+    output: relay2
