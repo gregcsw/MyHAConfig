@@ -125,21 +125,21 @@ cards:
 
       - type: horizontal-stack
         cards:
-
-          - type: custom:google-keep-card
-            entity: sensor.google_keep_c6fe53a582
-            # theme: dark
-            show:
-              - unchecked
-            style: |
-              ha-card {
-                background-color: rgba(0, 0, 0, 0);
-                -webkit-box-shadow: none;
-                -moz-box-shadow: none;
-                box-shadow: none;
-              }
-
-
+          - type: "custom:keep-notes-card"
+            entity: sensor.keep_shopping_list
+            showChecked: false
+          # - type: "custom:google-keep-card"
+          #   entity: sensor.google_keep_c6fe53a582
+          #   theme: dark
+          #   show:
+          #     - unchecked
+            # style: |
+            #   ha-card {
+            #     background-color: rgba(0, 0, 0, 0);
+            #     -webkit-box-shadow: none;
+            #     -moz-box-shadow: none;
+            #     box-shadow: none;
+            #   }
 
 
           - type: vertical-stack
@@ -293,8 +293,29 @@ cards:
                         color: "#FF0000"
               - type: horizontal-stack
                 cards:
-                  - type: custom:button-card
-                    color_type: blank-card
+                  - type: custom:mini-graph-card
+                    name: Kitchen
+                    entities: 
+                      - sensor.kitchen_temperature
+                    show:
+                      # extrema: true
+                      icon_adaptive_color: true
+                      icon: false
+                      graph: bar
+                    points_per_hour: 2
+                    color_thresholds:
+                      - value: -50
+                        color: "#FFFFFF"
+                      - value: 0
+                        color: "#1E90FF"
+                      - value: 18
+                        color: "#008000"
+                      - value: 28
+                        color: "#FFFF00"
+                      - value: 31
+                        color: "#FF8C00"
+                      - value: 35
+                        color: "#FF0000"
                   - type: custom:mini-graph-card
                     name: Pi
                     entities: 
@@ -330,37 +351,6 @@ cards:
       - type: picture-entity
         entity: camera.driveway_gate
         camera_view: live
-        # style: |
-        #   ha-card {
-        #     background-color: rgba(0, 0, 0, 0);
-        #     -webkit-box-shadow: none;
-        #     -moz-box-shadow: none;
-        #     box-shadow: none;
-        #   }
-
-
-      - type: custom:button-card
-        entity: sensor.city_power_load_shedding_stage
-        name: Load Shedding
-        # template: homekit-button
-        aspect_ratio: 7/1
-        show_state: true
-        layout: icon_name_state2nd
-        state:
-          - value: 'NOT LOAD SHEDDING'
-            color: green
-          - value: 'STAGE 1'
-            color: yellow
-            icon: mdi:power-plug-off 
-          - value: 'STAGE 2'
-            color: purple 
-            icon: mdi:power-plug-off 
-          - value: 'STAGE 3'
-            color: red 
-            icon: mdi:power-plug-off 
-          - value: 'STAGE 4'
-            color: black 
-            icon: mdi:power-plug-off 
 
       - type: horizontal-stack
         cards:
@@ -375,6 +365,8 @@ cards:
                     state:
                       - value: 'on'
                         color: Red
+                      - value: 'Closed'
+                        color: Green
                   - type: "custom:button-card"
                     entity: binary_sensor.pool_gate
                     template: homekit-button
@@ -436,22 +428,22 @@ cards:
                 cards:
                   - type: custom:button-card
                     template: homekit-button
-                    name: Lounge Fan
-                    entity: fan.lounge_fan
+                    name: Lounge Fan 1
+                    entity: fan.lounge_fan_1
                     show_label: true
                     tap_action:
                       action: call-service
                       service: fan.set_speed
                       service_data:
-                        entity_id: fan.lounge_fan
+                        entity_id: fan.lounge_fan_1
                         speed: off
                     icon: mdi:fan-off    
                     state: 
                       - operator: template
                         value: >
                           [[[
-                            return states['fan.lounge_fan'].attributes
-                            && (states['fan.lounge_fan'].attributes.speed === 'low')
+                            return states['fan.lounge_fan_1'].attributes
+                            && (states['fan.lounge_fan_1'].attributes.speed === 'low')
                           ]]]
                         icon: mdi:fan
                         color: CornflowerBlue
@@ -460,8 +452,8 @@ cards:
                       - operator: template
                         value: >
                           [[[
-                            return states['fan.lounge_fan'].attributes
-                            && (states['fan.lounge_fan'].attributes.speed === 'medium')
+                            return states['fan.lounge_fan_1'].attributes
+                            && (states['fan.lounge_fan_1'].attributes.speed === 'medium')
                           ]]]
                         icon: mdi:fan
                         color: CornflowerBlue
@@ -471,15 +463,201 @@ cards:
                       - operator: template
                         value: >
                           [[[
-                            return states['fan.lounge_fan'].attributes
-                            && (states['fan.lounge_fan'].attributes.speed === 'high')
+                            return states['fan.lounge_fan_1'].attributes
+                            && (states['fan.lounge_fan_1'].attributes.speed === 'high')
                           ]]]
                         icon: mdi:fan
                         color: CornflowerBlue
                         # spin: true
                         label: High
                   - type: custom:button-card
-                    color_type: blank-card
+                    template: homekit-button
+                    name: Lounge Fan 2
+                    entity: fan.lounge_fan_2
+                    show_label: true
+                    tap_action:
+                      action: call-service
+                      service: fan.set_speed
+                      service_data:
+                        entity_id: fan.lounge_fan_2
+                        speed: off
+                    icon: mdi:fan-off    
+                    state: 
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.lounge_fan_2'].attributes
+                            && (states['fan.lounge_fan_2'].attributes.speed === 'low')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        # spin: true
+                        label: Low           
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.lounge_fan_2'].attributes
+                            && (states['fan.lounge_fan_2'].attributes.speed === 'medium')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        # spin: true
+                        label: Medium
+                
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.lounge_fan_2'].attributes
+                            && (states['fan.lounge_fan_2'].attributes.speed === 'high')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        # spin: true
+                        label: High
+                  - type: custom:button-card
+                    template: homekit-button
+                    name: Kitchen Fan
+                    entity: fan.kitchen_fan
+                    show_label: true
+                    tap_action:
+                      action: call-service
+                      service: fan.set_speed
+                      service_data:
+                        entity_id: fan.kitchen_fan
+                        speed: off
+                    icon: mdi:fan-off    
+                    state: 
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.kitchen_fan'].attributes
+                            && (states['fan.kitchen_fan'].attributes.speed === 'low')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        # spin: true
+                        label: Low           
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.kitchen_fan'].attributes
+                            && (states['fan.kitchen_fan'].attributes.speed === 'medium')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        # spin: true
+                        label: Medium
+                
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.kitchen_fan'].attributes
+                            && (states['fan.kitchen_fan'].attributes.speed === 'high')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        # spin: true
+                        label: High
+
+
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    template: homekit-button
+                    name: Main Bedroom Fan
+                    entity: fan.main_bedroom_fan
+                    show_label: true
+                    tap_action:
+                      action: call-service
+                      service: fan.set_speed
+                      service_data:
+                        entity_id: fan.main_bedroom_fan
+                        speed: off
+                    icon: mdi:fan-off    
+                    state: 
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.main_bedroom_fan'].attributes
+                            && (states['fan.main_bedroom_fan'].attributes.speed === 'low')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        spin: true
+                        label: Low
+                        # tap_action:
+                        #   action: call-service
+                        #   service: fan.set_speed
+                        #   service_data:
+                        #     entity_id: fan.main_bedroom_fan
+                        #     speed: medium
+                  
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.main_bedroom_fan'].attributes
+                            && (states['fan.main_bedroom_fan'].attributes.speed === 'medium')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        spin: true
+                        label: Medium
+                
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.main_bedroom_fan'].attributes
+                            && (states['fan.main_bedroom_fan'].attributes.speed === 'high')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        spin: true
+                        label: High
+                  - type: custom:button-card
+                    template: homekit-button
+                    name: Nursery Fan
+                    entity: fan.nursery_fan
+                    show_label: true
+                    tap_action:
+                      action: call-service
+                      service: fan.set_speed
+                      service_data:
+                        entity_id: fan.nursery_fan
+                        speed: off
+                    icon: mdi:fan-off    
+                    state: 
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.nursery_fan'].attributes
+                            && (states['fan.nursery_fan'].attributes.speed === 'low')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        # spin: true
+                        label: Low           
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.nursery_fan'].attributes
+                            && (states['fan.nursery_fan'].attributes.speed === 'medium')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        # spin: true
+                        label: Medium
+                
+                      - operator: template
+                        value: >
+                          [[[
+                            return states['fan.nursery_fan'].attributes
+                            && (states['fan.nursery_fan'].attributes.speed === 'high')
+                          ]]]
+                        icon: mdi:fan
+                        color: CornflowerBlue
+                        # spin: true
+                        label: High
                   - type: custom:button-card
                     color_type: blank-card
 
@@ -490,25 +668,8 @@ cards:
                   - type: custom:button-card
                     entity: light.all_outside_lights
                     template: homekit-button
-                    # icon: mdi:outdoor-lamp
                   - type: "custom:button-card"
-                    entity: light.nursery_lamp
-                    template: homekit-button
-                  - type: "custom:button-card"
-                    entity: light.sonoff_1000371477
-                    template: homekit-button
-                    state:
-                      - value: 'on'
-                        color: auto 
-                    tap_action:
-                      action: more-info
-              - type: horizontal-stack
-                cards:
-                  - type: "custom:button-card"
-                    entity: light.lounge_light
-                    template: homekit-button
-                  - type: "custom:button-card"
-                    entity: light.lounge_lamp
+                    entity: light.desk_lamp
                     template: homekit-button
                   - type: "custom:button-card"
                     entity: light.tv_led
@@ -516,32 +677,57 @@ cards:
                     state:
                       - value: 'on'
                         color: auto 
+
               - type: horizontal-stack
                 cards:
                   - type: "custom:button-card"
-                    entity: light.dining_room_light
+                    entity: light.lounge_light_1
                     template: homekit-button
                   - type: "custom:button-card"
-                    entity: light.desk_lamp
+                    entity: light.lounge_light_2
                     template: homekit-button
                   - type: "custom:button-card"
-                    entity: light.dining_room_led
+                    entity: light.lounge_lamp
                     template: homekit-button
-                    state:
-                      - value: 'on'
-                        color: auto 
+
               - type: horizontal-stack
                 cards:
+                  - type: "custom:button-card"
+                    entity: light.main_bedroom_light
+                    template: homekit-button
                   - type: custom:button-card
                     color_type: blank-card
                   - type: custom:button-card
                     color_type: blank-card
+
+              - type: horizontal-stack
+                cards:
                   - type: "custom:button-card"
-                    entity: light.lounge_led
+                    entity: light.nursery_light
+                    template: homekit-button
+                  - type: "custom:button-card"
+                    entity: light.nursery_lamp
+                    template: homekit-button
+                  - type: "custom:button-card"
+                    entity: light.nursery_led
                     template: homekit-button
                     state:
                       - value: 'on'
                         color: auto 
+                    tap_action:
+                      action: more-info
 
-      
 
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    entity: light.kitchen_light
+                    template: homekit-button
+                  - type: "custom:button-card"
+                    entity: light.kitchen_led
+                    template: homekit-button
+                    state:
+                      - value: 'on'
+                        color: white
+                  - type: custom:button-card
+                    color_type: blank-card
