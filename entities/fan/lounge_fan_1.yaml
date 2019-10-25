@@ -1,7 +1,7 @@
 # Sonoff iFan02 in Lounge
 
 platform: mqtt
-name: "Lounge Fan"
+name: "Lounge Fan 1"
 command_topic: "cmnd/SonoffiFan02Lounge/FanSpeed"
 speed_command_topic: "cmnd/SonoffiFan02Lounge/FanSpeed"
 state_topic: "stat/SonoffiFan02Lounge/RESULT"
