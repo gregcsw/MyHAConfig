@@ -33,11 +33,11 @@
     name: version_current
 
   # Load Shedding Stage Sensor, Scrape for City Power Website (result SHEDDING = Stage 0)
-  - platform: scrape
-    name: "City Power Load Shedding Stage"
-    resource: https://www.citypower.co.za/customers/Pages/Load_Shedding.aspx
-    select: ".maindiv b"
-    scan_interval: 600
+  # - platform: scrape
+  #   name: "City Power Load Shedding Stage"
+  #   resource: https://www.citypower.co.za/customers/Pages/Load_Shedding_Downloads.aspx
+  #   select: ".maindiv b"
+  #   scan_interval: 600
 
   - platform: unifigateway
     host: 192.168.1.10
@@ -45,11 +45,10 @@
     username: !secret unifi_user
     password: !secret unifi_password
 
-# https://github.com/PiotrMachowski/Home-Assistant-custom-components-Google-Keep
-
-  - platform: google_keep
+# https://github.com/klejejs/ha_keep_notes_sensor
+# https://github.com/klejejs/lovelace-keep-notes-card
+  - platform: keep_notes_sensor
+    name: "Keep Shopping List"
     username: !secret google_keep.username
     password: !secret google_keep.password
-    titles:
-      - 'Shopping List'
-    # pinned: true
+    list_id: "1DuoS4RCYed74BXOmv-crNG38OoKZiJ_SjfZkoxv0a56XIYUnu7mCSCbcwOUSriWzL0CIHT8JwQ"
