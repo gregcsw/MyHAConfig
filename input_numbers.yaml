@@ -37,3 +37,11 @@
     max: 9999999
     step: 1
     
+  water_meter_reading_property:
+    name: Water Meter Reading Property
+    mode: box
+    unit_of_measurement: KL
+    min: 0
+    max: 9999999
+    step: 1
+    
