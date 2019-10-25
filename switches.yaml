@@ -9,3 +9,16 @@
 #         friendly_name: "TV Input"
 #         command_on: 'JgBwAFESKREWEikRFhIVEikSFhEpEhYRFhEWEhUAA0tQEioRFhIpERYSFBMpEhUSKBMUExUSFhEVAANMUREpEhYRKRIWERYRKhEWESoRFhEWEhUSFgADSlESKREWEikSFRIWESkSFhEpEhYRFhEWEhUADQUAAAAAAAAAAA=='
 #         command_off: 'JgBwAFESKREWEikRFhIVEikSFhEpEhYRFhEWEhUAA0tQEioRFhIpERYSFBMpEhUSKBMUExUSFhEVAANMUREpEhYRKRIWERYRKhEWESoRFhEWEhUSFgADSlESKREWEikSFRIWESkSFhEpEhYRFhEWEhUADQUAAAAAAAAAAA=='
+
+
+#LEDMaster
+  - platform: mqtt
+    scan_interval: 10
+    name: "LED Master"
+    command_topic: "cmnd/SonoffBasic-LEDM/POWER"
+    state_topic: "stat/SonoffBasic-LEDM/POWER"
+    availability_topic: "tele/SonoffBasic-LEDM/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    payload_on: "ON"
+    payload_off: "OFF"
