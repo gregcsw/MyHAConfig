@@ -1,0 +1,11 @@
+#Kitchen - SonoffiFan03
+platform: mqtt
+scan_interval: 10
+name: "Kitchen Light"
+command_topic: "cmnd/SonoffiFan03-Kitchen/POWER1"
+state_topic: "stat/SonoffiFan03-Kitchen/POWER1"
+availability_topic: "tele/SonoffiFan03-Kitchen/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
