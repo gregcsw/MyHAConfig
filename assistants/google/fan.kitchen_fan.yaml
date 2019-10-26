@@ -1,0 +1,4 @@
+fan.kitchen_fan:
+  name: Kitchen Fan 
+  expose: true
+  room: Kitchen

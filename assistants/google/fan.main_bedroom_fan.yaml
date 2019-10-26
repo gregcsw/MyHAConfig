@@ -1,0 +1,4 @@
+fan.main_bedroom_fan:
+  name: Main Bedroom Fan 
+  expose: true
+  room: Main Bedroom

@@ -1,0 +1,4 @@
+light.kitchen_light:
+  name: Kitchen Light
+  expose: true
+  room: Kitchen

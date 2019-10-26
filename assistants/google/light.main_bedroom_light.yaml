@@ -1,0 +1,4 @@
+light.main_bedroom_light:
+  name: Main Bedroom Light
+  expose: true
+  room: Main Bedroom

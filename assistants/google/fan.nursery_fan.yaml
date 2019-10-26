@@ -1,0 +1,4 @@
+fan.nursery_fan:
+  name: Nursery Fan 
+  expose: true
+  room: Nursery
