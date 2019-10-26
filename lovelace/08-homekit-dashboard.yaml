@@ -584,7 +584,7 @@ cards:
                           ]]]
                         icon: mdi:fan
                         color: CornflowerBlue
-                        spin: true
+                        # spin: true
                         label: Low
                         # tap_action:
                         #   action: call-service
@@ -601,7 +601,7 @@ cards:
                           ]]]
                         icon: mdi:fan
                         color: CornflowerBlue
-                        spin: true
+                        # spin: true
                         label: Medium
                 
                       - operator: template
@@ -612,7 +612,7 @@ cards:
                           ]]]
                         icon: mdi:fan
                         color: CornflowerBlue
-                        spin: true
+                        # spin: true
                         label: High
                   - type: custom:button-card
                     template: homekit-button
