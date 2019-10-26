@@ -40,6 +40,17 @@ weather:
   name: Weather
   entities:
     - sun.sun
+    - binary_sensor.protection_window
+    - sensor.current_ozone_level
+    - sensor.current_uv_index
+    - sensor.current_uv_level
+    - sensor.max_uv_index
+    - sensor.skin_type_1_safe_exposure_time
+    - sensor.skin_type_2_safe_exposure_time
+    - sensor.skin_type_3_safe_exposure_time
+    - sensor.skin_type_4_safe_exposure_time
+    - sensor.skin_type_5_safe_exposure_time
+    - sensor.skin_type_6_safe_exposure_time
     - weather.dark_sky
     
 openings:
@@ -169,6 +180,9 @@ buttons:
     - binary_sensor.rf_switch_2_3
     - binary_sensor.lounge_light_switch_1
     - binary_sensor.lounge_light_switch_2
+    - binary_sensor.lounge_light_switch_3
+    - binary_sensor.lounge_light_switch_4
+    - binary_sensor.gate_bell_1
 
 kitchen_pi:
   name: Kitchen Pi
@@ -179,5 +193,7 @@ motion:
   name: Motion Sensors
   entities:
     - binary_sensor.kitchen_motion
+
+
 
 ### Views (TABS)
