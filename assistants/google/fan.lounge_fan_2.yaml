@@ -1,0 +1,4 @@
+fan.lounge_fan_2:
+  name: Lounge Fan 2
+  expose: true
+  room: Living Room

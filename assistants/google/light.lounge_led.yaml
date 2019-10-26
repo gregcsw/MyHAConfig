@@ -1,4 +1,0 @@
-light.lounge_led:
-  name: Lounge LED
-  expose: true
-  room: Lounge

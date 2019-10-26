@@ -1,0 +1,4 @@
+light.nursery_led:
+  name: Nursery LED
+  expose: true
+  room: Nursery

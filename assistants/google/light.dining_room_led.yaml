@@ -1,4 +1,0 @@
-light.dining_room_led:
-  name: Dining Room LED
-  expose: true
-  room: Lounge
