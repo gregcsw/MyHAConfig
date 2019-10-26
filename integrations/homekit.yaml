@@ -19,22 +19,22 @@ homekit:
       - light.all_outside_lights
       - light.desk_lamp
       - light.kitchen_led
-      # - light.kitchen_light
+      - light.kitchen_light
       - light.lounge_lamp
       - light.lounge_light_1
       - light.lounge_light_2
-      # - light.main_bedroom_light
+      - light.main_bedroom_light
       - light.nursery_lamp
       - light.nursery_led
-      # - light.nursery_light
+      - light.nursery_light
       - light.tv_led
       
       # Fans
-      # - fan.kitchen_fan
+      - fan.kitchen_fan
       - fan.lounge_fan_1
       - fan.lounge_fan_2
-      # - fan.main_bedroom_fan
-      # - fan.nursery_fan
+      - fan.main_bedroom_fan
+      - fan.nursery_fan
 
       # Binary Sensors
       - binary_sensor.driveway_gate
