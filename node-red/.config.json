@@ -448,7 +448,7 @@
   },
   "node-red-contrib-home-assistant-websocket": {
    "name": "node-red-contrib-home-assistant-websocket",
-   "version": "0.15.0",
+   "version": "0.16.3",
    "local": false,
    "nodes": {
     "server": {
@@ -1227,7 +1227,7 @@
   },
   "node-red-node-msgpack": {
    "name": "node-red-node-msgpack",
-   "version": "1.1.3",
+   "version": "1.2.0",
    "local": false,
    "nodes": {
     "msgpack": {
@@ -1349,7 +1349,7 @@
   },
   "node-red-node-suncalc": {
    "name": "node-red-node-suncalc",
-   "version": "0.0.11",
+   "version": "0.0.12",
    "local": false,
    "nodes": {
     "suncalc": {
