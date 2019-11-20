@@ -9,6 +9,11 @@ wifi:
   fast_connect: true
   # Enable fast_connect for hidden wifi networks
 
+  ap:
+    ssid: tv_led_esp01s
+    password: !secret wifi_password
+    
+
 # Enable logging
 logger:
   level: error

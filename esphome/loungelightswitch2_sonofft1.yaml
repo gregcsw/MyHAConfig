@@ -9,7 +9,7 @@ wifi:
   fast_connect: true
   # Enable fast_connect for hidden wifi networks
   ap:
-    ssid: loungelightswitch_sonofft1    
+    ssid: loungelightswitch2_sonofft1    
     password: !secret esphomepass
     
 # Enable logging

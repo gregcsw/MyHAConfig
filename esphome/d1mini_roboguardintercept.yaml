@@ -9,6 +9,10 @@ wifi:
   fast_connect: true
   # Enable fast_connect for hidden wifi networks
 
+  ap:
+    ssid: d1mini_roboguardintercept
+    password: !secret wifi_password
+    
 # Enable logging
 logger:
   level: error
