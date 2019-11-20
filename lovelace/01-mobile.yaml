@@ -604,37 +604,13 @@ cards:
       - break
 
 
-
-
       - type: custom:weather-card
         entity: weather.dark_sky
         # icons: "/local/custom-lovelace/weather-card/icons/"          
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            entity: sensor.city_power_load_shedding_stage
-            name: Load Shedding
-            # template: homekit-button
-            aspect_ratio: 4/1
-            show_state: true
-            layout: icon_name_state2nd
-            state:
-              - value: 'NOT LOAD SHEDDING'
-                color: green
-              - value: 'STAGE 1'
-                color: yellow
-                icon: mdi:power-plug-off 
-              - value: 'STAGE 2'
-                color: purple 
-                icon: mdi:power-plug-off 
-              - value: 'STAGE 3'
-                color: red 
-                icon: mdi:power-plug-off 
-              - value: 'STAGE 4'
-                color: black 
-                icon: mdi:power-plug-off 
+
 
       - break
+
 
       - type: horizontal-stack
         cards:
@@ -690,17 +666,17 @@ cards:
         locationTextSize: 80
         entities:           
         - entity: calendar.greg_personal_gmail
-          color: dodgerblue
+          titleColor: dodgerblue
         - entity: calendar.wrench_jenny_gmail_com
-          color: darkorange
+          titleColor: darkorange
         - entity: calendar.sarah_personal
-          color: pink
+          titleColor: pink
         - entity: calendar.holidays_in_south_africa
-          color: green
+          titleColor: green
         - entity: calendar.meal_plan
-          color: MediumOrchid
+          titleColor: MediumOrchid
         - entity: calendar.family
-          color: HotPink
-        locationIconColor: rgb(230, 124, 115)
+          titleColor: HotPink
+        locationIconColor: 'rgb(230, 124, 115)'
         timeColor: silver
         showProgressBar: false

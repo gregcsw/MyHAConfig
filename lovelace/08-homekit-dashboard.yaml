@@ -86,21 +86,21 @@ cards:
         timeSize: 80
         locationTextSize: 80
         entities:           
-        - entity: calendar.greg_personal_gmail
-          color: dodgerblue
-        - entity: calendar.wrench_jenny_gmail_com
-          color: darkorange
-        - entity: calendar.sarah_personal
-          color: pink
-        - entity: calendar.holidays_in_south_africa
-          color: green
-        - entity: calendar.meal_plan
-          color: MediumOrchid
-        - entity: calendar.family
-          color: HotPink
-        locationIconColor: rgb(230, 124, 115)
+          - entity: calendar.greg_personal_gmail
+            titleColor: dodgerblue
+          - entity: calendar.wrench_jenny_gmail_com
+            titleColor: darkorange
+          - entity: calendar.sarah_personal
+            titleColor: pink
+          - entity: calendar.holidays_in_south_africa
+            titleColor: green
+          - entity: calendar.meal_plan
+            titleColor: MediumOrchid
+          - entity: calendar.family
+            titleColor: HotPink
+        locationIconColor: 'rgb(230, 124, 115)'
         timeColor: silver
-        showProgressBar: false
+        showProgressBar: true
         style: |
           ha-card {
             background-color: rgba(0, 0, 0, 0);
@@ -121,6 +121,8 @@ cards:
             -moz-box-shadow: none;
             box-shadow: none;
           }
+
+
 
 
       - type: horizontal-stack
@@ -145,6 +147,32 @@ cards:
           - type: vertical-stack
             cards:
 
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    template: homekit-button
+                    entity: binary_sensor.protection_window
+                    state: 
+                      - value: 'On'
+                        color: '#EF6C00'
+                  - type: "custom:button-card"
+                    template: homekit-button
+                    entity: sensor.current_uv_level
+                    state:
+                      - value: 'Low'
+                        color: '#558B2F'
+                      - value: 'Moderate'
+                        color: '#F9A825'
+                      - value: 'High'
+                        color: '#EF6C00'
+                      - value: 'Very High'
+                        color: '#B71C1C'
+                      - value: 'Extreme'
+                        color: '#6A1B9A'
+                  - type: "custom:button-card"
+                    template: homekit-button
+                    entity: sensor.skin_type_1_safe_exposure_time
+                    
               - type: horizontal-stack
                 cards:
 
