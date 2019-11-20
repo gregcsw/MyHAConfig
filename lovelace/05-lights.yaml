@@ -9,7 +9,7 @@ id: lights
 icon: mdi:lightbulb
 cards:
 
-  - type: custom:monster-card
+  - type: custom:auto-entities
     card:
       type: entities
       title: Lights that are ON
@@ -18,7 +18,7 @@ cards:
         - domain: light
           state: "on"
 
-  - type: custom:monster-card
+  - type: custom:auto-entities
     card:
       type: entities
       title: Lights that are OFF

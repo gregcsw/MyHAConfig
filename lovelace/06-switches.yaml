@@ -9,7 +9,7 @@ id: switches
 icon: mdi:toggle-switch
 cards:
 
-  - type: custom:monster-card
+  - type: custom:auto-entities
     card:
       type: entities
       title: Switches that are ON
@@ -20,7 +20,7 @@ cards:
       exclude:
         - entity_id: switch.gate_remote
 
-  - type: custom:monster-card
+  - type: custom:auto-entities
     card:
       type: entities
       title: Switches that are OFF
