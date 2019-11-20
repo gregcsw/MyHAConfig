@@ -5,7 +5,9 @@ title: Wrench Compound
 #excluded_entities:
   #- weblink.router
 resources:
-  - url: /local/atomic-calendar.js
+  - url: /community_plugin/atomic_calendar/atomic_calendar.js
+    type: module
+  - url: /community_plugin/lovelace-auto-entities/auto-entities.js
     type: module
   - url: /community_plugin/bar-card/bar-card.js
     type: js
@@ -27,9 +29,7 @@ resources:
     type: module
   - url: /local/github/thomasloven/layout-card.js?track=true
     type: js
-  - url: /community_plugin/mini-graph-card/mini-graph-card.js
-    type: module
-  - url: /community_plugin/monster-card/monster-card.js
+  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
     type: module
   - url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
     type: js
