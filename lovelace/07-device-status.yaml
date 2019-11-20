@@ -9,29 +9,6 @@ id: device_status
 icon: mdi:desktop-tower
 cards:
 
-# Cool Ideas Speed Test
-  - type: vertical-stack
-    cards:
-      - type: picture
-        image: /local/images/cool-ideas.png
-      - type: custom:mini-graph-card
-        name: Speedtest
-        align_state: center
-        icon: mdi:speedometer
-        show:
-          extrema: true
-          labels: true
-          points: true
-        entities:
-          - entity: sensor.speedtest_download
-            name: Download
-            color: green
-          - entity: sensor.speedtest_upload
-            name: Upload
-            color: blue
-          - entity: sensor.speedtest_ping
-            name: Ping
-            color: gray
 # Ubuntu 18.04 Server status
   - type: vertical-stack
     cards:
