@@ -100,7 +100,7 @@ cards:
             titleColor: HotPink
         locationIconColor: 'rgb(230, 124, 115)'
         timeColor: silver
-        showProgressBar: true
+        showProgressBar: false
         style: |
           ha-card {
             background-color: rgba(0, 0, 0, 0);
@@ -460,11 +460,7 @@ cards:
                     entity: fan.lounge_fan_1
                     show_label: true
                     tap_action:
-                      action: call-service
-                      service: fan.set_speed
-                      service_data:
-                        entity_id: fan.lounge_fan_1
-                        speed: off
+                      action: more-info
                     icon: mdi:fan-off    
                     state: 
                       - operator: template
@@ -504,11 +500,7 @@ cards:
                     entity: fan.lounge_fan_2
                     show_label: true
                     tap_action:
-                      action: call-service
-                      service: fan.set_speed
-                      service_data:
-                        entity_id: fan.lounge_fan_2
-                        speed: off
+                      action: more-info
                     icon: mdi:fan-off    
                     state: 
                       - operator: template
@@ -548,11 +540,7 @@ cards:
                     entity: fan.kitchen_fan
                     show_label: true
                     tap_action:
-                      action: call-service
-                      service: fan.set_speed
-                      service_data:
-                        entity_id: fan.kitchen_fan
-                        speed: off
+                      action: more-info
                     icon: mdi:fan-off    
                     state: 
                       - operator: template
@@ -597,11 +585,7 @@ cards:
                     entity: fan.main_bedroom_fan
                     show_label: true
                     tap_action:
-                      action: call-service
-                      service: fan.set_speed
-                      service_data:
-                        entity_id: fan.main_bedroom_fan
-                        speed: off
+                      action: more-info
                     icon: mdi:fan-off    
                     state: 
                       - operator: template
@@ -614,13 +598,6 @@ cards:
                         color: CornflowerBlue
                         # spin: true
                         label: Low
-                        # tap_action:
-                        #   action: call-service
-                        #   service: fan.set_speed
-                        #   service_data:
-                        #     entity_id: fan.main_bedroom_fan
-                        #     speed: medium
-                  
                       - operator: template
                         value: >
                           [[[
@@ -648,11 +625,7 @@ cards:
                     entity: fan.nursery_fan
                     show_label: true
                     tap_action:
-                      action: call-service
-                      service: fan.set_speed
-                      service_data:
-                        entity_id: fan.nursery_fan
-                        speed: off
+                      action: more-info
                     icon: mdi:fan-off    
                     state: 
                       - operator: template
