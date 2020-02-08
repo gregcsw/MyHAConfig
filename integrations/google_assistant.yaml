@@ -6,7 +6,9 @@
 
 google_assistant:
   project_id: !secret ga_project_id 
-  api_key: !secret google_homegraph_api
+  # api_key: !secret google_homegraph_api
+  service_account: !include HomeAssitantGoogleAssistantInt-314dd79d69ef.json
+  report_state: true
 
   expose_by_default: false
 
