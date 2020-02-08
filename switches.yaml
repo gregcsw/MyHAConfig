@@ -22,3 +22,20 @@
     payload_not_available: "Offline"
     payload_on: "ON"
     payload_off: "OFF"
+
+
+  - platform: flux
+    lights:
+      - light.tv_led
+      - light.tv_led_2
+    name: Fluxer
+    start_time: '16:00'
+    stop_time: '21:30'
+    start_colortemp: 4000
+    sunset_colortemp: 3000
+    stop_colortemp: 2500
+    brightness: 160
+    disable_brightness_adjust: false
+    mode: rgb
+    transition: 20  
+    interval: 30
