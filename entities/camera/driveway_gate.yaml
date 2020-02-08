@@ -3,7 +3,8 @@
 platform: generic
 name: Driveway Gate
 still_image_url: http://192.168.1.80:8765/picture/1/current/?_username=admin&_signature=e49a22e8a01dad747b4bd73e50a29be894f341bf
-stream_source: http://192.168.1.80:8765/picture/1/frame/
+# stream_source: http://192.168.1.80:8765/picture/1/frame/
+stream_source: rtsp://192.168.1.82:554/ch01/0
 username: admin
-password: !secret motioneye-password
+password: !secret driveway_gate_cam_pass
 authentication: basic
