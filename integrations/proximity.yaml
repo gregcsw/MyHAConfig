@@ -4,9 +4,18 @@
 # https://www.home-assistant.io/components/proximity/
 
 proximity:
-  home:
+  jenny_to_home:
     devices:
-
-      - person.jenny
+      - device_tracker.life360_jenny
+    tolerance: 50
+    unit_of_measurement: m
+  greg_to_home:
+    devices:
+      - device_tracker.life360_greg
+    tolerance: 50
+    unit_of_measurement: m
+  sally_to_home:
+    devices:
+      - device_tracker.life360_sally
     tolerance: 50
     unit_of_measurement: m
