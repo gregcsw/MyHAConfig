@@ -24,3 +24,10 @@
     max: 9999999
     step: 1
     
+  fan_timer:
+    name: Fan Timer
+    mode: slider
+    min: 0
+    max: 120
+    step: 10
+    unit_of_measurement: minutes
