@@ -136,7 +136,10 @@ cards:
           - type: custom:button-card
             color_type: blank-card
 
-
+      - type: entities
+        entities:
+          - input_number.fan_timer
+          
       - type: horizontal-stack
         cards:
 
