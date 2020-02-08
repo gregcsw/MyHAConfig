@@ -4,7 +4,7 @@
 # https://www.home-assistant.io/components/homekit
 #
 homekit:
-  # auto_start: false
+  auto_start: false
   filter:
     include_entities: # Max 100
       # Switches
@@ -14,6 +14,7 @@ homekit:
       - switch.lounge_fan_light_2
       - switch.kitchen_screen
       - switch.flat_bedroom_heater
+      - switch.sonoff_1000878ab4
 
       # Lights
       - light.all_outside_lights
@@ -38,6 +39,15 @@ homekit:
 
       # Binary Sensors
       - binary_sensor.driveway_gate
+
+      # Temps
+      - sensor.outside_temperature
+      - sensor.lounge_temperature
+      - sensor.nursery_temperature
+      - sensor.main_bedroom_temperature
+      - sensor.kitchen_temperature
+      - sensor.flat_bedroom_temperature
+      - sensor.pool_temperature
       
       
 
