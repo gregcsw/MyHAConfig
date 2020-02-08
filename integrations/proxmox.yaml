@@ -1,0 +1,17 @@
+# Proxmox VE is an open-source server virtualization environment. This integration allows you to poll various data from your instance.
+#
+# https://www.home-assistant.io/integrations/proxmoxve/
+
+proxmoxve:
+  - host: 192.168.1.2
+    username: !secret proxmox_user
+    password: !secret proxmox_pass
+    verify_ssl: false
+    nodes:
+      - node: pve
+        vms:
+          - 105
+          - 107
+          - 111
+          - 113
+          - 115
