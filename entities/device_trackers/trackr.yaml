@@ -1,0 +1,7 @@
+# The trackr platform allows you to detect presence using TrackR devices.
+# The official TrackR mobile app handles the tracking of the TrackR devices using your phones Bluetooth and GPS.
+# https://www.home-assistant.io/integrations/trackr/
+
+platform: trackr
+username: !secret trackr_user
+password: !secret trackr_password
