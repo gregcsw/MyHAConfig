@@ -1,14 +1,15 @@
 - id: SetTheme
-  initial_state: true
+  alias: Set Theme
   trigger:
-  - platform: homeassistant
-    event: start
+  - event: start
+    platform: homeassistant
   action:
-    service: frontend.set_theme
-    data:
+  - data:
       name: midnight-blue-round
+    service: frontend.set_theme
+  initial_state: true
 - id: AllOutsideLightsOn
-  alias: Outside Lights on if ANY outside light is turned ON
+  alias: Outside Lights ON if ANY outside light is turned ON
   trigger:
   - entity_id: light.outside_driveway_lights
     platform: state
@@ -32,7 +33,7 @@
     platform: state
     to: 'on'
   condition:
-    condition: state
+  - condition: state
     entity_id: sun.sun
     state: below_horizon
   action:
@@ -40,20 +41,8 @@
       entity_id: light.all_outside_lights
     service: light.turn_on
   initial_state: true
-- id: OutsideLightsOffAfter10min
-  alias: Outside lights OFF after 10 minutes
-  trigger:
-  - entity_id: light.all_outside_lights
-    platform: state
-    to: 'on'
-  action:
-  - delay: 00:10:00
-  - data:
-      entity_id: light.all_outside_lights
-    service: light.turn_off
-  initial_state: true
 - id: OutsideLightsOffAfterRestart
-  alias: Turn outside lights off if HA Starts
+  alias: Turn OFF outside lights if HA Starts
   trigger:
   - event: start
     platform: homeassistant
@@ -64,33 +53,33 @@
       entity_id: light.all_outside_lights
     service: light.turn_off
   initial_state: true
-- id: UpgradeAlert
-  alias: system_upgrade_alert
+- id: UpgradeAlertHA
+  alias: Upgrade Alert - Home Assistant
   trigger:
+  - entity_id: sensor.version_available
     platform: state
-    entity_id: sensor.version_available
   condition:
   - condition: template
     value_template: "{{\n  states('sensor.version_available')\n  !=\n  states('sensor.version_current')\n\
       }}"
   action:
-  - service: notify.mobile_app_gregs_iphone_8_plus
-    data_template:
-      title: Upgrade time!
-      message: There is a Home Assistant upgrade for Hass.io pending! Version {{ states('sensor.version_available')
-        }} just got released! Version {{ states('sensor.version_current') }} is currently
-        installed.
+  - data_template:
       data:
         attachment:
           content-type: png
           url: https://gcswhassio.duckdns.org/local/images/package-up.png
-  - service: persistent_notification.create
-    data_template:
+      message: There is a Home Assistant upgrade for Hass.io pending! Version {{ states('sensor.version_available')
+        }} just got released! Version {{ states('sensor.version_current') }} is currently
+        installed.
       title: Upgrade time!
+    service: notify.mobile_app_gregs_iphone_8_plus
+  - data_template:
       message: There is a Home Assistant upgrade for Hass.io pending! Version {{ states('sensor.version_available')
         }} just got released! Version {{ states('sensor.version_current') }} is currently
         installed.
       notification_id: hassio_upgrade
+      title: Upgrade time!
+    service: persistent_notification.create
 - id: PoolON
   alias: Pool Pump ON
   trigger:
@@ -108,7 +97,7 @@
   alias: Pool Pump OFF
   trigger:
   - event: sunset
-    offset: -01:30:00
+    offset: -02:30:00
     platform: sun
   action:
   - data:
@@ -118,8 +107,7 @@
     service: switch.turn_off
   initial_state: true
 - id: PoolOFFAfterPowerFailure
-  alias: Turn pool off if power comes on after 4pm
-  initial_state: true
+  alias: Turn OFF Pool Pump if power comes on after 4pm
   trigger:
   - event: start
     platform: homeassistant
@@ -131,6 +119,7 @@
   - data:
       entity_id: switch.pool_pump
     service: switch.turn_off
+  initial_state: true
 - id: MobileAppLightsOn
   alias: Turn ON all outside lights
   initial_state: true
@@ -154,16 +143,16 @@
     service: light.turn_off
     entity_id: light.all_outside_lights
 - id: MobileAppLightsToggle
-  alias: Toggle All Outside Lights
-  initial_state: true
+  alias: TOGGLE All Outside Lights
   trigger:
-    platform: event
-    event_type: ios.notification_action_fired
-    event_data:
+  - event_data:
       actionName: TOGGLE_OUTSIDE_LIGHTS
+    event_type: ios.notification_action_fired
+    platform: event
   action:
+  - entity_id: light.all_outside_lights
     service: light.toggle
-    entity_id: light.all_outside_lights
+  initial_state: true
 - id: MobileAppLightsGate
   alias: Open/Close Driveway Gate
   initial_state: true
@@ -177,29 +166,29 @@
     entity_id: switch.gate_remote
 - id: '20'
   alias: Actionable Notification When Arriving Home
-  initial_state: true
   trigger:
+  - below: '750'
+    entity_id: proximity.jenny_to_home
     platform: numeric_state
-    entity_id: proximity.home
-    below: 400
   condition:
-    condition: and
+  - condition: and
     conditions:
     - condition: template
-      value_template: '{{ states.proximity.home.attributes.dir_of_travel == "towards"
-        }}'
+      value_template: '{{ states.proximity.jenny_to_home.attributes.dir_of_travel
+        == "towards" }}'
     - condition: state
       entity_id: device_tracker.life360_jenny
       state: moving
   action:
-    service: notify.ios_greg_s_iphone_8_plus
-    data:
-      message: Approaching Home
+  - data:
       data:
         push:
           category: ARRIVING_HOME
+      message: Approaching Home
+    service: notify.mobile_app_gregs_iphone_8_plus
+  initial_state: true
 - id: OutsideLighstOffWhenLeaving
-  alias: Outside Lights Off when leaving
+  alias: Outside Lights OFF when leaving
   trigger:
   - entity_id: device_tracker.life360_jenny
     from: home
@@ -229,3 +218,56 @@
   - data:
       entity_id: switch.flat_bedroom_heater
     service: switch.turn_off
+- id: '1574517252030'
+  alias: Start HomeKit
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - delay: 0:05
+  - service: homekit.start
+- id: timed_mainbed_fan
+  alias: Main Bedroom Fan Timer
+  trigger:
+  - entity_id: fan.main_bedroom_fan
+    for: 00:{{ states('input_number.fan_timer') | int }}:00
+    platform: state
+    to: 'on'
+  action:
+  - entity_id: fan.main_bedroom_fan
+    service: fan.turn_off
+- id: timed_mainbed_fan
+  alias: Lounge Fan 2 Timer
+  trigger:
+  - entity_id: fan.lounge_fan_2
+    for: 00:{{ states('input_number.fan_timer') | int }}:00
+    platform: state
+    to: 'on'
+  action:
+  - entity_id: fan.lounge_fan_2
+    service: fan.turn_off
+  initial_state: false
+- id: '1581163268118'
+  alias: Upgrade Alert - HACS
+  description: ''
+  trigger:
+  - above: '0'
+    entity_id: sensor.hacs
+    platform: numeric_state
+  condition: []
+  action:
+  - data_template:
+      data:
+        attachment:
+          content-type: png
+          url: https://gcswhassio.duckdns.org/local/images/package-up.png
+      message: There are HACS upgrades available!
+      title: HACS Upgrades Available!
+    service: notify.mobile_app_gregs_iphone_8_plus
+  - data_template:
+      message: There are HACS upgrades available!
+      notification_id: hacs_upgrade
+      title: HACS Upgrades Available!
+    service: persistent_notification.create
