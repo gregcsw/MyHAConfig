@@ -16,7 +16,7 @@ wifi:
 
 # Enable logging
 logger:
-  level: error
+
 
 # Enable Home Assistant API
 api:
@@ -33,3 +33,10 @@ light:
     num_leds: 24
     rgb_order: BRG
     name: "TV LED"
+    
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO1
+      # inverted: true
+    name: "Sony TV Power Sensor"

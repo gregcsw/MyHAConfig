@@ -15,7 +15,7 @@ wifi:
     
 # Enable logging
 logger:
-  level: error
+  level: debug
 
 # Enable Home Assistant API
 api:
@@ -95,5 +95,5 @@ sensor:
     humidity:
       name: "Kitchen Humidity"
       accuracy_decimals: 0
-    model: AM2302
+    # model: AM2302
     update_interval: 60s

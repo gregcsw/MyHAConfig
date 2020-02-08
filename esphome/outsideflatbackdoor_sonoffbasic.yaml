@@ -15,7 +15,6 @@ wifi:
     
 # Enable logging
 logger:
-  level: error
 
 # Enable Home Assistant API
 api:

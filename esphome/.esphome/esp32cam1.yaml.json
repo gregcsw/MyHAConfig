@@ -1,0 +1,25 @@
+{
+  "storage_version": 1,
+  "name": "esp32cam1",
+  "comment": null,
+  "esphome_version": "1.14.3",
+  "src_version": 1,
+  "arduino_version": "espressif32@1.11.0",
+  "address": "esp32cam1.local",
+  "esp_platform": "ESP32",
+  "board": "nodemcu-32s",
+  "build_path": "/config/esphome/esp32cam1",
+  "firmware_bin_path": "/data/esp32cam1/.pioenvs/esp32cam1/firmware.bin",
+  "loaded_integrations": [
+    "api",
+    "async_tcp",
+    "captive_portal",
+    "esp32_camera",
+    "esphome",
+    "logger",
+    "network",
+    "ota",
+    "web_server_base",
+    "wifi"
+  ]
+}

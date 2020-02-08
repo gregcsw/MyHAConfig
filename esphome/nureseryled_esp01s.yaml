@@ -15,7 +15,7 @@ wifi:
     
 # Enable logging
 logger:
-  level: error
+  level: debug
 
 # Enable Home Assistant API
 api:
@@ -29,7 +29,7 @@ light:
   - platform: fastled_clockless
     chipset: WS2811
     pin: GPIO2
-    num_leds: 16
+    num_leds: 30
     rgb_order: BRG
     name: "Nursery LED"
     effects:
