@@ -13,12 +13,7 @@
   "loaded_integrations": [
     "api",
     "async_tcp",
-    "binary_sensor",
     "esphome",
-    "fastled_base",
-    "fastled_clockless",
-    "gpio",
-    "light",
     "logger",
     "network",
     "ota",

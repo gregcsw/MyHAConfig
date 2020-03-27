@@ -26,43 +26,43 @@ ota:
   password: !secret esphomepass
   
   
-light:
-  - platform: fastled_clockless
-    chipset: WS2811
-    pin: D4
-    num_leds: 24
-    rgb_order: BRG
-    name: "TV LED"
-    # effects:
-    #   - addressable_rainbow:
-    #   - addressable_rainbow:
-    #       name: Rainbow Effect With Custom Values
-    #       speed: 10
-    #       width: 50
-    #   - addressable_random_twinkle:
-    #   - addressable_random_twinkle:
-    #       name: Random Twinkle Effect With Custom Values
-    #       twinkle_probability: 5%
-    #       progress_interval: 32ms
-    #   - addressable_color_wipe:
-    #   - addressable_color_wipe:
-    #       name: Color Wipe Effect With Custom Values
-    #       colors:
-    #         - red: 100%
-    #           green: 100%
-    #           blue: 100%
-    #           num_leds: 1
-    #         - red: 0%
-    #           green: 0%
-    #           blue: 0%
-    #           num_leds: 1
-    #       add_led_interval: 100ms
-    #       reverse: False
+# light:
+#   - platform: fastled_clockless
+#     chipset: WS2811
+#     pin: D4
+#     num_leds: 24
+#     rgb_order: BRG
+#     name: "TV LED"
+#     # effects:
+#     #   - addressable_rainbow:
+#     #   - addressable_rainbow:
+#     #       name: Rainbow Effect With Custom Values
+#     #       speed: 10
+#     #       width: 50
+#     #   - addressable_random_twinkle:
+#     #   - addressable_random_twinkle:
+#     #       name: Random Twinkle Effect With Custom Values
+#     #       twinkle_probability: 5%
+#     #       progress_interval: 32ms
+#     #   - addressable_color_wipe:
+#     #   - addressable_color_wipe:
+#     #       name: Color Wipe Effect With Custom Values
+#     #       colors:
+#     #         - red: 100%
+#     #           green: 100%
+#     #           blue: 100%
+#     #           num_leds: 1
+#     #         - red: 0%
+#     #           green: 0%
+#     #           blue: 0%
+#     #           num_leds: 1
+#     #       add_led_interval: 100ms
+#     #       reverse: False
           
-binary_sensor:
-  - platform: gpio
-    pin:
-      number: D8
-      inverted: true
-    name: "Sony TV Power Sensor"
+# binary_sensor:
+#   - platform: gpio
+#     pin:
+#       number: D8
+#       inverted: true
+#     name: "Sony TV Power Sensor"
     

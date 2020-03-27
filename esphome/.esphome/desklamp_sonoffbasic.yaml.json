@@ -17,12 +17,15 @@
     "binary_sensor",
     "esphome",
     "gpio",
+    "json",
     "light",
     "logger",
     "network",
     "ota",
     "output",
     "status_led",
+    "web_server",
+    "web_server_base",
     "wifi"
   ]
 }

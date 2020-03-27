@@ -47,6 +47,15 @@ sensor:
       accuracy_decimals: 0
     update_interval: 60s
 
+  - platform: adc
+    pin: A0
+    name: "Lounge Brightness"
+    unit_of_measurement: '%'
+    update_interval: 60s
+    accuracy_decimals: 0
+    filters:
+      - multiply: 100
+
 binary_sensor:
   - platform: gpio
     pin: 

@@ -11,6 +11,7 @@
   "build_path": "/config/esphome/nodemculounge",
   "firmware_bin_path": "/data/nodemculounge/.pioenvs/nodemculounge/firmware.bin",
   "loaded_integrations": [
+    "adc",
     "api",
     "async_tcp",
     "binary_sensor",
@@ -23,6 +24,7 @@
     "sensor",
     "switch",
     "template",
+    "voltage_sampler",
     "wifi"
   ]
 }
