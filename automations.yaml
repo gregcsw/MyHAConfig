@@ -68,16 +68,16 @@
         attachment:
           content-type: png
           url: https://gcswhassio.duckdns.org/local/images/package-up.png
-      message: There is a Home Assistant upgrade for Hass.io pending! Version {{ states('sensor.version_available')
+      message: There is a Home Assistant upgrade pending! Version {{ states('sensor.version_available')
         }} just got released! Version {{ states('sensor.version_current') }} is currently
         installed.
       title: Upgrade time!
     service: notify.mobile_app_gregs_iphone_8_plus
   - data_template:
-      message: There is a Home Assistant upgrade for Hass.io pending! Version {{ states('sensor.version_available')
+      message: There is a Home Assistant upgrade pending! Version {{ states('sensor.version_available')
         }} just got released! Version {{ states('sensor.version_current') }} is currently
         installed.
-      notification_id: hassio_upgrade
+      notification_id: home_assistant_upgrade
       title: Upgrade time!
     service: persistent_notification.create
 - id: PoolON
@@ -228,27 +228,26 @@
   action:
   - delay: 0:05
   - service: homekit.start
-- id: timed_mainbed_fan
-  alias: Main Bedroom Fan Timer
+- id: timer_mainbed_fan
+  alias: Timer - Main Bedroom Fan
   trigger:
   - entity_id: fan.main_bedroom_fan
-    for: 00:{{ states('input_number.fan_timer') | int }}:00
+    for: 00:{{ states('input_number.main_bedroom_fan_timer') | int }}:00
     platform: state
     to: 'on'
   action:
   - entity_id: fan.main_bedroom_fan
     service: fan.turn_off
-- id: timed_mainbed_fan
-  alias: Lounge Fan 2 Timer
+- id: timer_nursery_fan
+  alias: Timer - Nursery Fan
   trigger:
-  - entity_id: fan.lounge_fan_2
-    for: 00:{{ states('input_number.fan_timer') | int }}:00
+  - entity_id: fan.nursery_fan
+    for: 00:{{ states('input_number.nursery_fan_timer') | int }}:00
     platform: state
     to: 'on'
   action:
-  - entity_id: fan.lounge_fan_2
+  - entity_id: fan.nursery_fan
     service: fan.turn_off
-  initial_state: false
 - id: '1581163268118'
   alias: Upgrade Alert - HACS
   description: ''
@@ -271,3 +270,46 @@
       notification_id: hacs_upgrade
       title: HACS Upgrades Available!
     service: persistent_notification.create
+- id: '1582284127172'
+  alias: Turn OFF Flat Geyser after power restore.
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - delay: 00:30:00
+  - entity_id: switch.sonoff_1000878ab4
+    service: switch.turn_off
+- id: Corona Alert
+  alias: Corona Alert - Home Assistant
+  trigger:
+  - entity_id: sensor.south_africa_coronavirus_confirmed
+    platform: state
+  - entity_id: sensor.south_africa_coronavirus_deaths
+    platform: state
+  - entity_id: sensor.south_africa_coronavirus_recovered
+    platform: state
+  action:
+  - data_template:
+      data:
+        attachment:
+          content-type: png
+          url: https://brands.home-assistant.io/coronavirus/logo.png
+      message: South Africa COVID-19 Update. Confirmed Cases {{ states('sensor.south_africa_coronavirus_confirmed')
+        }}, Current Cases {{ states('sensor.south_africa_coronavirus_current') }},
+        Deaths {{ states('sensor.south_africa_coronavirus_deaths') }}, Recovered {{
+        states('sensor.south_africa_coronavirus_recovered') }}.
+      title: COVID-19
+    service: notify.mobile_app_gregs_iphone_8_plus
+  - data_template:
+      data:
+        attachment:
+          content-type: png
+          url: https://brands.home-assistant.io/coronavirus/logo.png
+      message: South Africa COVID-19 Update. Confirmed Cases {{ states('sensor.south_africa_coronavirus_confirmed')
+        }}, Current Cases {{ states('sensor.south_africa_coronavirus_current') }},
+        Deaths {{ states('sensor.south_africa_coronavirus_deaths') }}, Recovered {{
+        states('sensor.south_africa_coronavirus_recovered') }}.
+      title: COVID-19
+    service: notify.mobile_app_jenny_s_iphone_7_plus
