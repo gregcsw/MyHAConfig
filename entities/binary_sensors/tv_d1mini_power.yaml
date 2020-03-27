@@ -1,0 +1,4 @@
+platform: ping
+name: Sony TV Power
+host: 192.168.66.34
+scan_interval: 5
