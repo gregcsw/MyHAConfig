@@ -1,4 +1,4 @@
-light.tv_led:
+light.tv_led_2:
   name: TV LED
   expose: true
   aliases:
