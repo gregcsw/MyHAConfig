@@ -1,9 +1,0 @@
-# Top Menu Button for Apple TV
-
-apple_tv_top_menu:
-  alias: Apple TV Top Menu
-  sequence:
-    service: remote.send_command
-    data:
-      entity_id: remote.lounge_apple_tv
-      command: top_menu

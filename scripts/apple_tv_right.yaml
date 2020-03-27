@@ -1,9 +1,0 @@
-# Right Button for Apple TV
-
-apple_tv_right:
-  alias: Apple TV Right
-  sequence:
-    service: remote.send_command
-    data:
-      entity_id: remote.lounge_apple_tv
-      command: right

@@ -1,9 +1,0 @@
-# Sony Amp Input SAT/CATV Button using RM Mini IR transmitter
-
-sony_amp_input_satcatv:
-  alias: Sony Amp Input SAT/CATV (IR)
-  sequence:
-    - service: broadlink.send
-      data:
-        host: 192.168.1.23
-        packet: JgCqAFERKhEqERYRFhIVEhYRFhEWEhUSFhEWESoRKhEWESoAAsJQEikSKRIWERYRFhIVEhYRFhEWEhUSFhEpEikSFhEpAALDUBIpEikSFRIWERYRFhIVEhYRFhEWEhUSKRIpEhUSKQACwlERKhEqERYRFhIVEhYRFhEWEhUSFhEWESoRKhEWESoAAsJRESoRKRIWERYRFhIVEhYRFhEWEhUSFhEqESkSFhEqAA0FAAAAAAAAAAAAAAAAAAA=
