@@ -14,7 +14,6 @@ plex.conf
 sabnzbd.conf
 secrets.yaml
 
-  
 .cloud
 .homekit
 .storage
@@ -32,12 +31,14 @@ secrets.yaml
 
 .DS_Store
 
+# Folder
 www/images/*
 www/custom-lovelace
 custom_components
 www/tmp
-
-
+www/community
+node-red
+esphome
 
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
