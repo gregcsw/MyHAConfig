@@ -33,10 +33,3 @@ input_boolean:
     name: Fake Heater
     initial: off
 
-# The HACS Integration allows you to easily install custom integration and cards
-# https://github.com/custom-components/hacs
-hacs:
-  token: !secret hacs_github_access_token
-  appdaemon: true
-  python_script: true
-  theme: true
