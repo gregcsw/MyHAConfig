@@ -5,9 +5,9 @@ ux_goodie:
   lovelace-background: 'center / cover no-repeat url("/local/background.jpg") fixed'
   
 # MAIN INTERFACE COLORS
-  primary-color: "#607D8B"  # "rgb(255, 159, 10)" # Top bar (global), HA links, panels like media player
+  primary-color: "#5294E2"  # "rgb(255, 159, 10)" # Top bar (global), HA links, panels like media player
   light-primary-color: "#607D8B"  # user avatar
-  accent-color: "#FF9F0A"  # e.g. loader in HACS
+  accent-color: "#0099ff"  # e.g. loader in HACS
   divider-color: "#545454"  # divider in sidebar
   ch-background: "rgba(10, 10, 10, 0.7)"  # top bar (custom header)
   

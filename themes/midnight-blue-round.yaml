@@ -1,6 +1,5 @@
 midnight-blue-round:
   ha-card-border-radius: "15px"
-  primary-color: "#5294E2"
   accent-color: "#0099ff"
   dark-primary-color: "var(--accent-color)"
   light-primary-color: "var(--accent-color)"
@@ -21,7 +20,7 @@ midnight-blue-round:
   sidebar-icon-color: "var(--paper-item-icon-color)"
   paper-card-header-color: "var(--paper-item-icon-color)"
   paper-card-background-color: "#202020"
-  paper-dialog-background-color: "#434954"
+  paper-dialog-background-color: "#434954"   
   paper-item-icon-color: "#d3d3d3"
   paper-item-icon-active-color: "#d8bf50"
   paper-item-icon_-_color: "var(--primary-text-color)"
