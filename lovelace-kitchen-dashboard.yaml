@@ -322,7 +322,7 @@ views:
                       - type: custom:mini-graph-card
                         name: Pool
                         entities:
-                          - entity: sensor.pool_temperature
+                          - entity: sensor.tasmota_pool_pump_ds18b20_temperature
                             index: 0
                         show:
                           extrema: true
@@ -451,7 +451,7 @@ views:
                           - value: 'on'
                             color: Red
                       - type: custom:button-card
-                        entity: switch.pool_pump
+                        entity: switch.tasmota_pool_pump
                         template: homekit-button
                         state:
                           - value: 'on'
@@ -736,7 +736,7 @@ views:
                         entity: light.lounge_light_2
                         template: homekit-button
                       - type: "custom:button-card"
-                        entity: light.lounge_lamp
+                        entity: light.tasmota_lounge_lamp
                         template: homekit-button
 
                   - type: horizontal-stack

@@ -1,4 +1,4 @@
-switch.pool_pump:
+switch.tasmota_pool_pump:
   name: Pool Pump
   expose: true
   aliases:

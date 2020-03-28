@@ -1,4 +1,4 @@
-light.lounge_lamp:
+light.tasmota_lounge_lamp:
   name: Lounge Lamp
   expose: true
   room: Lounge

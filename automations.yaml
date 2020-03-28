@@ -1,5 +1,5 @@
 - id: SetTheme
-  alias: Set Theme
+  alias: System - Set Theme
   trigger:
   - event: start
     platform: homeassistant
@@ -9,7 +9,7 @@
     service: frontend.set_theme
   initial_state: true
 - id: AllOutsideLightsOn
-  alias: Outside Lights ON if ANY outside light is turned ON
+  alias: Lights - Turn ON All Outside Lights if any outside light is turned on
   trigger:
   - entity_id: light.outside_driveway_lights
     platform: state
@@ -37,24 +37,24 @@
     entity_id: sun.sun
     state: below_horizon
   action:
-  - data:
-      entity_id: light.all_outside_lights
+  - data: {}
+    entity_id: light.all_outside_lights
     service: light.turn_on
   initial_state: true
 - id: OutsideLightsOffAfterRestart
-  alias: Turn OFF outside lights if HA Starts
+  alias: Lights - Turn OFF outside lights if HA Starts
   trigger:
   - event: start
     platform: homeassistant
   condition: []
   action:
   - delay: 00:01:00
-  - data:
-      entity_id: light.all_outside_lights
+  - data: {}
+    entity_id: light.all_outside_lights
     service: light.turn_off
   initial_state: true
 - id: UpgradeAlertHA
-  alias: Upgrade Alert - Home Assistant
+  alias: Alert - Upgrade available - Home Assistant
   trigger:
   - entity_id: sensor.version_available
     platform: state
@@ -81,17 +81,17 @@
       title: Upgrade time!
     service: persistent_notification.create
 - id: PoolON
-  alias: Pool Pump ON
+  alias: Pool Pump - Daily Timer ON
   trigger:
   - event: sunrise
-    offset: 02:30:00
+    offset: 02:00:00
     platform: sun
   action:
   - entity_id: switch.tasmota_pool_pump
     service: switch.turn_on
   initial_state: true
 - id: PoolOFF
-  alias: Pool Pump OFF
+  alias: Pool Pump - Daily timer OFF
   trigger:
   - event: sunset
     offset: -02:30:00
@@ -101,7 +101,7 @@
     service: switch.turn_off
   initial_state: true
 - id: PoolOFFAfterPowerFailure
-  alias: Turn OFF Pool Pump if power comes on after 4pm
+  alias: Pool Pump - Turn OFF if power comes on after 4pm
   trigger:
   - event: start
     platform: homeassistant
@@ -110,34 +110,34 @@
     before: 07:00
     condition: time
   action:
-  - data:
-      entity_id: switch.pool_pump
+  - data: {}
+    entity_id: switch.tasmota_pool_pump
     service: switch.turn_off
   initial_state: true
 - id: MobileAppLightsOn
-  alias: Turn ON all outside lights
-  initial_state: true
+  alias: Lights - Turn ON all outside lights from actionable notification
   trigger:
-    platform: event
-    event_type: ios.notification_action_fired
-    event_data:
+  - event_data:
       actionName: TURN_ON_OUTSIDE_LIGHTS
-  action:
-    service: light.turn_on
-    entity_id: light.all_outside_lights
-- id: MobileAppLightsOff
-  alias: Turn OFF all outside lights
-  initial_state: true
-  trigger:
-    platform: event
     event_type: ios.notification_action_fired
-    event_data:
-      actionName: TURN_OFF_OUTSIDE_LIGHTS
+    platform: event
   action:
+  - entity_id: light.all_outside_lights
+    service: light.turn_on
+  initial_state: true
+- id: MobileAppLightsOff
+  alias: Lights - Turn OFF all outside lights from actionable notification
+  trigger:
+  - event_data:
+      actionName: TURN_OFF_OUTSIDE_LIGHTS
+    event_type: ios.notification_action_fired
+    platform: event
+  action:
+  - entity_id: light.all_outside_lights
     service: light.turn_off
-    entity_id: light.all_outside_lights
+  initial_state: true
 - id: MobileAppLightsToggle
-  alias: TOGGLE All Outside Lights
+  alias: Lights - TOGGLE All Outside Lights from actionable notification
   trigger:
   - event_data:
       actionName: TOGGLE_OUTSIDE_LIGHTS
@@ -148,18 +148,18 @@
     service: light.toggle
   initial_state: true
 - id: MobileAppLightsGate
-  alias: Open/Close Driveway Gate
-  initial_state: true
+  alias: Driveway Gate - Open/Close from actionable notification
   trigger:
-    platform: event
-    event_type: ios.notification_action_fired
-    event_data:
+  - event_data:
       actionName: OPEN_CLOSE_DRIVEWAY_GATE
+    event_type: ios.notification_action_fired
+    platform: event
   action:
+  - entity_id: switch.gate_remote
     service: switch.toggle
-    entity_id: switch.gate_remote
+  initial_state: true
 - id: '20'
-  alias: Actionable Notification When Arriving Home
+  alias: Actionable Notification  - Jenny Approaching Home
   trigger:
   - below: '750'
     entity_id: proximity.jenny_to_home
@@ -182,7 +182,7 @@
     service: notify.mobile_app_gregs_iphone_8_plus
   initial_state: true
 - id: OutsideLighstOffWhenLeaving
-  alias: Outside Lights OFF when leaving
+  alias: Lights - Turn Outside Lights OFF when leaving
   trigger:
   - entity_id: device_tracker.life360_jenny
     from: home
@@ -195,11 +195,11 @@
     platform: state
   condition: []
   action:
-  - data:
-      entity_id: light.all_outside_lights
+  - data: {}
+    entity_id: light.all_outside_lights
     service: light.turn_off
 - id: FlatHeaterOffWhenSallyLeaves
-  alias: Turn OFF Flat Heater when Sally leaves in the morning
+  alias: Heater - Turn OFF Flat Heater when Sally leaves in the morning
   trigger:
   - entity_id: device_tracker.life360_sally
     from: home
@@ -209,11 +209,11 @@
     before: '16:00'
     condition: time
   action:
-  - data:
-      entity_id: switch.flat_bedroom_heater
+  - data: {}
+    entity_id: switch.flat_bedroom_heater
     service: switch.turn_off
 - id: '1574517252030'
-  alias: Start HomeKit
+  alias: System - Start HomeKit
   description: ''
   trigger:
   - event: start
@@ -223,7 +223,7 @@
   - delay: 0:05
   - service: homekit.start
 - id: timer_mainbed_fan
-  alias: Timer - Main Bedroom Fan
+  alias: Fan Off Timer - Main Bedroom Fan
   trigger:
   - entity_id: fan.main_bedroom_fan
     for: 00:{{ states('input_number.main_bedroom_fan_timer') | int }}:00
@@ -233,7 +233,7 @@
   - entity_id: fan.main_bedroom_fan
     service: fan.turn_off
 - id: timer_nursery_fan
-  alias: Timer - Nursery Fan
+  alias: Fan Off Timer - Nursery Fan
   trigger:
   - entity_id: fan.nursery_fan
     for: 00:{{ states('input_number.nursery_fan_timer') | int }}:00
@@ -243,7 +243,7 @@
   - entity_id: fan.nursery_fan
     service: fan.turn_off
 - id: '1581163268118'
-  alias: Upgrade Alert - HACS
+  alias: Alert - Upgrade available - HACS
   description: ''
   trigger:
   - above: '0'
@@ -265,7 +265,7 @@
       title: HACS Upgrades Available!
     service: persistent_notification.create
 - id: '1582284127172'
-  alias: Turn OFF Flat Geyser after power restore.
+  alias: Geyser - Turn OFF Flat Geyser after power restore.
   description: ''
   trigger:
   - event: start
@@ -276,7 +276,7 @@
   - entity_id: switch.sonoff_1000878ab4
     service: switch.turn_off
 - id: Corona Alert
-  alias: Corona Alert - Home Assistant
+  alias: Alert - Corona Stats
   trigger:
   - entity_id: sensor.south_africa_coronavirus_confirmed
     platform: state
