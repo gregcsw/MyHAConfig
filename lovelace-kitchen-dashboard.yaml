@@ -755,7 +755,7 @@ views:
                         entity: light.nursery_light
                         template: homekit-button
                       - type: "custom:button-card"
-                        entity: light.nursery_lamp
+                        entity: light.tasmota_nursery_lamp
                         template: homekit-button
                       - type: "custom:button-card"
                         entity: light.nursery_led
