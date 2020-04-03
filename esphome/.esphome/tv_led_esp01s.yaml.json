@@ -16,10 +16,13 @@
     "esphome",
     "fastled_base",
     "fastled_clockless",
+    "json",
     "light",
     "logger",
     "network",
     "ota",
+    "web_server",
+    "web_server_base",
     "wifi"
   ]
 }

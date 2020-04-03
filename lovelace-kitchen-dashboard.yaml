@@ -721,7 +721,7 @@ views:
                         entity: light.tasmota_desk_lamp
                         template: homekit-button
                       - type: "custom:button-card"
-                        entity: light.tv_led
+                        entity: light.tasmota_tv_led
                         template: homekit-button
                         state:
                           - value: 'on'
