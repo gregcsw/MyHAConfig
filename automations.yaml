@@ -87,7 +87,7 @@
     offset: 02:00:00
     platform: sun
   action:
-  - entity_id: switch.tasmota_pool_pump
+  - entity_id: switch.pool_pump
     service: switch.turn_on
   initial_state: true
 - id: PoolOFF
@@ -97,7 +97,7 @@
     offset: -02:30:00
     platform: sun
   action:
-  - entity_id: switch.tasmota_pool_pump
+  - entity_id: switch.pool_pump
     service: switch.turn_off
   initial_state: true
 - id: PoolOFFAfterPowerFailure

@@ -1,4 +1,4 @@
-light.tasmota_nursery_lamp:
+light.nursery_lamp:
   name: Nursery Lamp
   expose: true
   room: Nursery

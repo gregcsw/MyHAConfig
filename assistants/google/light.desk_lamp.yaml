@@ -1,4 +1,4 @@
-light.tasmota_desk_lamp:
+light.desk_lamp:
   name: Desk Lamp
   expose: true
   aliases:
