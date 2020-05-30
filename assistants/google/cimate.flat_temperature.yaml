@@ -1,0 +1,6 @@
+climate.flat_bedroom_temp:
+  name: Flat Bedroom Temperature
+  expose: true
+  aliases:
+    - Flat Temperature
+  room: Flat

@@ -1,0 +1,7 @@
+camera.driveway_gate:
+  name: Driveway Gate
+  expose: true
+  aliases:
+    - Front Gate
+    - Drive Gate
+  room: Outside

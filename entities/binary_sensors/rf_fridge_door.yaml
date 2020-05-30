@@ -3,12 +3,12 @@
 # rule1 on Sonoff RF Bridge
 
 platform: mqtt
-name: "Pool Gate"
-state_topic: "RFBridge/poolgate"
+name: "Fridge Door"
+state_topic: "RFBridge/fridgedoor"
 availability_topic: "tele/sonoffrfbridge/LWT"
 qos: 1
 payload_on: "Open"
 payload_off: "Closed"
 payload_available: "Online"
 payload_not_available: "Offline"
-device_class: safety
+device_class: opening

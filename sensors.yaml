@@ -45,10 +45,14 @@
     username: !secret unifi_user
     password: !secret unifi_password
 
-# https://github.com/klejejs/ha_keep_notes_sensor
-# https://github.com/klejejs/lovelace-keep-notes-card
-  - platform: keep_notes_sensor
-    name: "Keep Shopping List"
-    username: !secret google_keep.username
-    password: !secret google_keep.password
-    list_id: "1DuoS4RCYed74BXOmv-crNG38OoKZiJ_SjfZkoxv0a56XIYUnu7mCSCbcwOUSriWzL0CIHT8JwQ"
+
+# Average house Temp
+  - platform: min_max
+    name: House Average Temperature  
+    entity_ids:
+      - sensor.main_bedroom_temperature
+      - sensor.nursery_temperature
+      - sensor.kitchen_temperature
+      - sensor.lounge_temperature
+    type: mean
+    round_digits: 0

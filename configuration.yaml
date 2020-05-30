@@ -1,16 +1,14 @@
 homeassistant:
 
   # Load packages
-  packages: !include_dir_named integrations
+  packages: !include_dir_named yaml_configured_integrations
 
   ################################################################################
     
   # Customization file
   customize: !include customize.yaml
 
-# The person component allows to connect device tracker entities to one or more person entities.
-# https://www.home-assistant.io/components/person/
-person:
+default_config:
 
 # Fake Heater setup to send Temps to Google Home
 climate: 

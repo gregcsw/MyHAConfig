@@ -22,6 +22,8 @@ button_card_templates:
             - font-weight: bold
         value: unavailable
     styles:
+      card:
+        - text-transform: capitalize
       grid:
         - grid-template-areas: '"i" "l" "n" "s"'
         - grid-template-columns: 1fr
@@ -111,30 +113,188 @@ views:
         cards:
           - type: horizontal-stack
             cards:
-              - type: custom:decluttering-card
-                template: tracking_picture_button
-                variables:
-                  - entity: device_tracker.life360_greg
-                  - entity_picture_away: /local/images/Greg-Away.jpg
-                  - entity_picture_home: /local/images/Greg-Home.jpg
-              - type: custom:decluttering-card
-                template: tracking_picture_button
-                variables:
-                  - entity: device_tracker.life360_jenny
-                  - entity_picture_away: /local/images/Jenny-Away.jpg
-                  - entity_picture_home: /local/images/Jenny-Home.jpg
-              - type: custom:decluttering-card
-                template: tracking_picture_button
-                variables:
-                  - entity: device_tracker.life360_lynne
-                  - entity_picture_away: /local/images/Lynne-Away.png
-                  - entity_picture_home: /local/images/Lynne-Home.png
-              - type: custom:decluttering-card
-                template: tracking_picture_button
-                variables:
-                  - entity: device_tracker.life360_sally
-                  - entity_picture_away: /local/images/Sally-Away.png
-                  - entity_picture_home: /local/images/Sally-Home.png
+              - type: 'custom:button-card'
+                entity: device_tracker.life360_greg
+                template: homekit-button
+                show_state: true
+                show_icon: false
+                show_name: false
+                show_last_changed: true
+                name: Greg
+                show_entity_picture: false
+                aspect_ratio: 1/1
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background-image: url(/local/images/Greg-Away.jpg)
+                    - background-size: cover
+                    - color: white
+                    - text-transform: capitalize
+                    - font-size: 12px
+                  label:
+                    - background-color: gray
+                    - opacity: 0.8
+                    - padding-right: 5px
+                    - font-size: 10px
+                  state:
+                    - background-color: gray
+                    - opacity: 0.8
+                    - padding-right: 5px
+                    - font-weight: bold
+                state:
+                  - value: home
+                    styles:
+                      card:
+                        - background-image: url(/local/images/Greg-Home.jpg)
+                          background-size: cover
+              - type: 'custom:button-card'
+                entity: device_tracker.life360_jenny
+                template: homekit-button
+                show_state: true
+                show_icon: false
+                show_name: false
+                show_last_changed: true
+                name: Greg
+                show_entity_picture: false
+                aspect_ratio: 1/1
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background-image: url(/local/images/Jenny-Away.jpg)
+                    - background-size: cover
+                    - color: white
+                    - text-transform: capitalize
+                    - font-size: 12px
+                  label:
+                    - background-color: gray
+                    - opacity: 0.8
+                    - padding-right: 5px
+                    - font-size: 10px
+                  state:
+                    - background-color: gray
+                    - opacity: 0.8
+                    - padding-right: 5px
+                    - font-weight: bold
+                state:
+                  - value: home
+                    styles:
+                      card:
+                        - background-image: url(/local/images/Jenny-Home.jpg)
+                          background-size: cover
+              - type: 'custom:button-card'
+                entity: device_tracker.life360_lynne
+                template: homekit-button
+                show_state: true
+                show_icon: false
+                show_name: false
+                show_last_changed: true
+                name: Greg
+                show_entity_picture: false
+                aspect_ratio: 1/1
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background-image: url(/local/images/Lynne-Away.png)
+                    - background-size: cover
+                    - color: white
+                    - text-transform: capitalize
+                    - font-size: 12px
+                  label:
+                    - background-color: gray
+                    - opacity: 0.8
+                    - padding-right: 5px
+                    - font-size: 10px
+                  state:
+                    - background-color: gray
+                    - opacity: 0.8
+                    - padding-right: 5px
+                    - font-weight: bold
+                state:
+                  - value: home
+                    styles:
+                      card:
+                        - background-image: url(/local/images/Lynne-Home.png)
+                          background-size: cover
+              - type: 'custom:button-card'
+                entity: device_tracker.life360_sally
+                template: homekit-button
+                show_state: true
+                show_icon: false
+                show_name: false
+                show_last_changed: true
+                name: Greg
+                show_entity_picture: false
+                aspect_ratio: 1/1
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background-image: url(/local/images/Sally-Away.png)
+                    - background-size: cover
+                    - color: white
+                    - text-transform: capitalize
+                    - font-size: 12px
+                  label:
+                    - background-color: gray
+                    - opacity: 0.8
+                    - padding-right: 5px
+                    - font-size: 10px
+                  state:
+                    - background-color: gray
+                    - opacity: 0.8
+                    - padding-right: 5px
+                    - font-weight: bold
+                state:
+                  - value: home
+                    styles:
+                      card:
+                        - background-image: url(/local/images/Sally-Home.png)
+                          background-size: cover
+
+          - type: entities
+            entities:
+              - entity: sensor.south_africa_coronavirus_confirmed
+                type: custom:multiple-entity-row
+                name: South Africa
+                show_state: false
+                icon: mdi:virus-outline
+                entities:
+                  - entity: sensor.south_africa_coronavirus_confirmed
+                    name: Confirmed
+                    unit: ' '
+                  - entity: sensor.south_africa_coronavirus_current
+                    name: Current
+                    unit: ' '
+                  - entity: sensor.south_africa_coronavirus_deaths
+                    name: Deaths
+                    unit: ' '
+                  - entity: sensor.south_africa_coronavirus_recovered
+                    name: Recovered
+                    unit: ' '
+              - entity: sensor.worldwide_coronavirus_confirmed
+                type: custom:multiple-entity-row
+                name: World
+                show_state: false
+                icon: mdi:virus-outline
+                entities:
+                  - entity: sensor.worldwide_coronavirus_confirmed
+                    name: Confirmed
+                    unit: ' '
+                  - entity: sensor.worldwide_coronavirus_current
+                    name: Current
+                    unit: ' '
+                  - entity: sensor.worldwide_coronavirus_deaths
+                    name: Deaths
+                    unit: ' '
+                  - entity: sensor.worldwide_coronavirus_recovered
+                    name: Recovered
+                    unit: ' '
+            header:
+              type: picture
+              image: '/local/images/corona.png'
 
           - type: picture-elements    
             image: /local/images/clock-bg-trans.png
@@ -171,57 +331,41 @@ views:
                 font-weight: 300 !important;
               }
 
-          - type: glance
-            entities:
-              - entity: sensor.south_africa_coronavirus_confirmed
-                name: SA Confirmed
-              - entity: sensor.south_africa_coronavirus_current
-                name: SA Current
-              - entity: sensor.south_africa_coronavirus_deaths
-                name: SA Deaths
-              - entity: sensor.south_africa_coronavirus_recovered
-                name: SA Recovered
-            show_icon: false
-            show_name: true
-            show_state: true
-            
-          - type: glance
-            entities:
-              - entity: sensor.worldwide_coronavirus_confirmed
-                name: WW Confirmed
-              - entity: sensor.worldwide_coronavirus_current
-                name: WW Current
-              - entity: sensor.worldwide_coronavirus_deaths
-                name: WW Deaths
-              - entity: sensor.worldwide_coronavirus_recovered
-                name: WW Recovered
-            show_icon: false
-            show_name: true
-            show_state: true
+
             
 
-          - type: "custom:atomic-calendar"
-            title: "Upcoming Events"
-            titleSize: 110
-            dateSize: 80
-            timeSize: 80
-            locationTextSize: 80
-            entities:           
+          - type: 'custom:atomic-calendar-revive'
+            name: Upcoming Events
+            enableModeChange: true
+            entities:
               - entity: calendar.greg_personal_gmail
-                titleColor: dodgerblue
+                eventTitleColor: dodgerblue
               - entity: calendar.wrench_jenny_gmail_com
-                titleColor: darkorange
+                eventTitleColor: darkorange
               - entity: calendar.sarah_personal
-                titleColor: pink
+                eventTitleColor: pink
               - entity: calendar.holidays_in_south_africa
-                titleColor: green
+                eventTitleColor: green
               - entity: calendar.meal_plan
-                titleColor: MediumOrchid
+                eventTitleColor: MediumOrchid
               - entity: calendar.family
-                titleColor: HotPink
+                eventTitleColor: HotPink
             locationIconColor: 'rgb(230, 124, 115)'
-            timeColor: silver
+            locationTextSize: 80
+            showColors: true
+            showDate: false
+            showDescription: false
+            showMonth: false
+            showNoEventsForToday: false
             showProgressBar: false
+            showWeekDay: true
+            sortByStartTime: true
+            timeColor: silver
+            timeSize: 80
+            titleSize: 110
+
+
+
             style: |
               ha-card {
                 background-color: rgba(0, 0, 0, 0);
@@ -232,38 +376,12 @@ views:
 
           - break
 
-          - type: custom:weather-card
+          - type: weather-forecast
             entity: weather.dark_sky
-            icons: "/local/custom-lovelace/weather-card/icons/"
-            style: |
-              ha-card {
-                background-color: rgba(0, 0, 0, 0);
-                -webkit-box-shadow: none;
-                -moz-box-shadow: none;
-                box-shadow: none;
-              }
-
-
-
+            show_forecast: true
 
           - type: horizontal-stack
             cards:
-              - type: "custom:keep-notes-card"
-                entity: sensor.keep_shopping_list
-                showChecked: false
-              # - type: "custom:google-keep-card"
-              #   entity: sensor.google_keep_c6fe53a582
-              #   theme: dark
-              #   show:
-              #     - unchecked
-                # style: |
-                #   ha-card {
-                #     background-color: rgba(0, 0, 0, 0);
-                #     -webkit-box-shadow: none;
-                #     -moz-box-shadow: none;
-                #     box-shadow: none;
-                #   }
-
 
               - type: vertical-stack
                 cards:
@@ -343,78 +461,128 @@ views:
 
                   - type: horizontal-stack
                     cards:
-                      - type: 'custom:button-card'
-                        template: homekit-button
-                        entity: sensor.kitchen_temperature
-                        styles:
-                          icon:
-                            - color: |
-                                [[[
-                                  if (entity.state < 1) return '#FFFFFF';
-                                  if (entity.state >= 1 && entity.state < 18) return '#1E90FF';
-                                  if (entity.state >= 18 && entity.state < 28) return '#008000';
-                                  if (entity.state >= 28 && entity.state < 31) return '#FF8C00';
-                                  if (entity.state <= 31) return '#FF0000';
-                                  else return 'gray';
-                                ]]]
-                          state:
-                            - font-size: 30px
+
+                      - type: custom:mini-graph-card
+                        name: House Avg
+                        entities: 
+                          - entity: sensor.house_average_temperature
+                            index: 0
+                        show:
+                          icon_adaptive_color: true
+                          graph: false
+                        color_thresholds:
+                          - color: '#FF0000'
+                            value: 100
+                          - color: '#FF8C00'
+                            value: 31
+                          - color: '#008000'
+                            value: 28
+                          - color: '#1E90FF'
+                            value: 19
+                          - color: '#FFFFFF'
+                            value: 0
+
+                      - type: custom:mini-graph-card
+                        name: Main Bedroom
+                        entities: 
+                          - entity: sensor.main_bedroom_temperature
+                            index: 0
+                        show:
+                          icon_adaptive_color: true
+                          graph: false
+                        color_thresholds:
+                          - color: '#FF0000'
+                            value: 100
+                          - color: '#FF8C00'
+                            value: 31
+                          - color: '#008000'
+                            value: 28
+                          - color: '#1E90FF'
+                            value: 19
+                          - color: '#FFFFFF'
+                            value: 0
                         
-                        
-                      - type: 'custom:button-card'
-                        template: homekit-button
-                        entity: sensor.main_bedroom_temperature
-                        styles:
-                          icon:
-                            - color: |
-                                [[[
-                                  if (entity.state < 1) return '#FFFFFF';
-                                  if (entity.state >= 1 && entity.state < 18) return '#1E90FF';
-                                  if (entity.state >= 18 && entity.state < 28) return '#008000';
-                                  if (entity.state >= 28 && entity.state < 31) return '#FF8C00';
-                                  if (entity.state <= 31) return '#FF0000';
-                                  else return 'gray';
-                                ]]]
-                          state:
-                            - font-size: 30px
-                        
+                      - type: custom:mini-graph-card
+                        name: Nursery
+                        entities: 
+                          - entity: sensor.nursery_temperature
+                            index: 0
+                        show:
+                          icon_adaptive_color: true
+                          graph: false
+                        color_thresholds:
+                          - color: '#FF0000'
+                            value: 100
+                          - color: '#FF8C00'
+                            value: 31
+                          - color: '#008000'
+                            value: 28
+                          - color: '#1E90FF'
+                            value: 19
+                          - color: '#FFFFFF'
+                            value: 0
                         
                   - type: horizontal-stack
                     cards:
-                      - type: 'custom:button-card'
-                        template: homekit-button
-                        entity: sensor.nursery_temperature
-                        styles:
-                          icon:
-                            - color: |
-                                [[[
-                                  if (entity.state < 1) return '#FFFFFF';
-                                  if (entity.state >= 1 && entity.state < 18) return '#1E90FF';
-                                  if (entity.state >= 18 && entity.state < 28) return '#008000';
-                                  if (entity.state >= 28 && entity.state < 31) return '#FF8C00';
-                                  if (entity.state <= 31) return '#FF0000';
-                                  else return 'gray';
-                                ]]]
-                          state:
-                            - font-size: 30px
-                        template: homekit-button
-                        
-                      - type: 'custom:button-card'
-                        template: homekit-button
-                        entity: sensor.flat_bedroom_temperature
-                        styles:
-                          icon:
-                            - color: |
-                                [[[
-                                  if (entity.state < 1) return '#FFFFFF';
-                                  if (entity.state >= 1 && entity.state < 18) return '#1E90FF';
-                                  if (entity.state >= 18 && entity.state < 28) return '#008000';
-                                  if (entity.state >= 28 && entity.state < 31) return '#FF8C00';
-                                  if (entity.state <= 31) return '#FF0000';
-                                  else return 'gray';
-                                ]]]
-                          state:
-                            - font-size: 30px
+                      - type: custom:mini-graph-card
+                        name: Kitchen
+                        entities: 
+                          - entity: sensor.kitchen_temperature
+                            index: 0
+                        show:
+                          icon_adaptive_color: true
+                          graph: false
+                        color_thresholds:
+                          - color: '#FF0000'
+                            value: 100
+                          - color: '#FF8C00'
+                            value: 31
+                          - color: '#008000'
+                            value: 28
+                          - color: '#1E90FF'
+                            value: 19
+                          - color: '#FFFFFF'
+                            value: 0
+
+                      - type: custom:mini-graph-card
+                        name: Lounge
+                        entities: 
+                          - entity: sensor.lounge_temperature
+                            index: 0
+                        show:
+                          icon_adaptive_color: true
+                          graph: false
+                        color_thresholds:
+                          - color: '#FF0000'
+                            value: 100
+                          - color: '#FF8C00'
+                            value: 31
+                          - color: '#008000'
+                            value: 28
+                          - color: '#1E90FF'
+                            value: 19
+                          - color: '#FFFFFF'
+                            value: 0
+
+                      - type: custom:mini-graph-card
+                        name: Flat
+                        entities: 
+                          - entity: sensor.flat_bedroom_temperature
+                            index: 0
+                        show:
+                          icon_adaptive_color: true
+                          graph: false
+                        color_thresholds:
+                          - color: '#FF0000'
+                            value: 100
+                          - color: '#FF8C00'
+                            value: 31
+                          - color: '#008000'
+                            value: 28
+                          - color: '#1E90FF'
+                            value: 19
+                          - color: '#FFFFFF'
+                            value: 0
                     
 
 
@@ -422,7 +590,7 @@ views:
           - break
 
           - type: picture-entity
-            entity: camera.driveway_gate
+            entity: camera.driveway_gate_720p
             camera_view: live
             show_name: false
             show_state: false
@@ -441,21 +609,31 @@ views:
                         state:
                           - value: 'on'
                             color: Red
-                          - value: 'Closed'
-                            color: Green
+                            styles:
+                              icon:
+                                - animation: blink 2s ease infinite
                       - type: "custom:button-card"
-                        entity: binary_sensor.pool_gate
+                        entity: binary_sensor.fridge_door
                         template: homekit-button
-                        icon: mdi:gate
+                        icon: mdi:fridge-top
                         state:
                           - value: 'on'
                             color: Red
-                      - type: custom:button-card
-                        entity: switch.pool_pump
+                            icon: mdi:fridge-alert
+                            styles:
+                              icon:
+                                - animation: blink 2s ease infinite
+                      - type: "custom:button-card"
+                        entity: binary_sensor.bottom_freezer_door
                         template: homekit-button
+                        icon: mdi:fridge-bottom
                         state:
                           - value: 'on'
-                            color: CornflowerBlue
+                            color: Red
+                            icon: mdi:fridge-alert
+                            styles:
+                              icon:
+                                - animation: blink 2s ease infinite
                   - type: horizontal-stack
                     cards:
                       - type: "custom:button-card"
@@ -466,6 +644,8 @@ views:
                           - value: 'on'
                             color: Red
                             icon: mdi:door-open
+                          - value: 'off'
+                            color: CornflowerBlue
                       - type: "custom:button-card"
                         entity: binary_sensor.kitchen_door
                         template: homekit-button
@@ -482,6 +662,7 @@ views:
                           - value: 'on'
                             color: Red
                             icon: mdi:door-open
+
                   - type: horizontal-stack
                     cards:
                       - type: "custom:button-card"
@@ -498,7 +679,11 @@ views:
                           - value: 'on'
                             color: Orange
                       - type: custom:button-card
-                        color_type: blank-card
+                        entity: switch.sonoff_1000878ab4
+                        template: homekit-button
+                        state:
+                          - value: 'on'
+                            color: Red
 
                   - type: horizontal-stack
                     cards:
@@ -708,7 +893,11 @@ views:
                             # spin: true
                             label: High
                       - type: custom:button-card
-                        color_type: blank-card
+                        entity: switch.pool_pump
+                        template: homekit-button
+                        state:
+                          - value: 'on'
+                            color: CornflowerBlue
 
               - type: vertical-stack
                 cards:

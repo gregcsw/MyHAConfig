@@ -17,12 +17,15 @@
     "dht",
     "esphome",
     "gpio",
+    "json",
     "logger",
     "network",
     "ota",
     "sensor",
     "status_led",
     "switch",
+    "web_server",
+    "web_server_base",
     "wifi"
   ]
 }

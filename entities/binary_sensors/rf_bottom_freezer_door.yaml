@@ -11,4 +11,4 @@ payload_on: "Open"
 payload_off: "Closed"
 payload_available: "Online"
 payload_not_available: "Offline"
-device_class: safety
+device_class: opening

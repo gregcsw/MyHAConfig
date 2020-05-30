@@ -5,11 +5,12 @@
     platform: homeassistant
   action:
   - data:
-      name: midnight-blue-round
+      name: Google Dark Theme
     service: frontend.set_theme
   initial_state: true
 - id: AllOutsideLightsOn
-  alias: Lights - Turn ON All Outside Lights if any outside light is turned on
+  alias: Lights (Outside) - Turn ON All Outside Lights If Any Outside Light Is Turned
+    On
   trigger:
   - entity_id: light.outside_driveway_lights
     platform: state
@@ -17,10 +18,10 @@
   - entity_id: light.outside_cottage_back_door_light
     platform: state
     to: 'on'
-  - entity_id: light.outside_cottage_front_stoep
+  - entity_id: light.outsidecottagefrontstoeplight
     platform: state
     to: 'on'
-  - entity_id: light.outside_flat_backdoor_light
+  - entity_id: light.outside_flat_back_door_light
     platform: state
     to: 'on'
   - entity_id: light.outside_play_area_lights
@@ -41,18 +42,6 @@
     entity_id: light.all_outside_lights
     service: light.turn_on
   initial_state: true
-- id: OutsideLightsOffAfterRestart
-  alias: Lights - Turn OFF outside lights if HA Starts
-  trigger:
-  - event: start
-    platform: homeassistant
-  condition: []
-  action:
-  - delay: 00:01:00
-  - data: {}
-    entity_id: light.all_outside_lights
-    service: light.turn_off
-  initial_state: true
 - id: UpgradeAlertHA
   alias: Alert - Upgrade available - Home Assistant
   trigger:
@@ -63,7 +52,7 @@
     value_template: "{{\n  states('sensor.version_available')\n  !=\n  states('sensor.version_current')\n\
       }}"
   action:
-  - data_template:
+  - data:
       data:
         attachment:
           content-type: png
@@ -73,7 +62,7 @@
         installed.
       title: Upgrade time!
     service: notify.mobile_app_gregs_iphone_8_plus
-  - data_template:
+  - data:
       message: There is a Home Assistant upgrade pending! Version {{ states('sensor.version_available')
         }} just got released! Version {{ states('sensor.version_current') }} is currently
         installed.
@@ -87,18 +76,22 @@
     offset: 02:00:00
     platform: sun
   action:
-  - entity_id: switch.pool_pump
-    service: switch.turn_on
+  - device_id: 9b345bad80984f79bc638deeded3188f
+    domain: switch
+    entity_id: switch.pool_pump
+    type: turn_on
   initial_state: true
 - id: PoolOFF
-  alias: Pool Pump - Daily timer OFF
+  alias: Pool Pump - Daily Timer OFF
   trigger:
   - event: sunset
-    offset: -02:30:00
+    offset: -02:00:00
     platform: sun
   action:
-  - entity_id: switch.pool_pump
-    service: switch.turn_off
+  - device_id: 9b345bad80984f79bc638deeded3188f
+    domain: switch
+    entity_id: switch.pool_pump
+    type: turn_off
   initial_state: true
 - id: PoolOFFAfterPowerFailure
   alias: Pool Pump - Turn OFF if power comes on after 4pm
@@ -115,7 +108,8 @@
     service: switch.turn_off
   initial_state: true
 - id: MobileAppLightsOn
-  alias: Lights - Turn ON all outside lights from actionable notification
+  alias: Actionable Notification (Lights) - Turn ON All Outside Lights From Actionable
+    Notification
   trigger:
   - event_data:
       actionName: TURN_ON_OUTSIDE_LIGHTS
@@ -126,7 +120,8 @@
     service: light.turn_on
   initial_state: true
 - id: MobileAppLightsOff
-  alias: Lights - Turn OFF all outside lights from actionable notification
+  alias: Actionable Notification (Lights) - Turn OFF all outside lights from actionable
+    notification
   trigger:
   - event_data:
       actionName: TURN_OFF_OUTSIDE_LIGHTS
@@ -137,7 +132,8 @@
     service: light.turn_off
   initial_state: true
 - id: MobileAppLightsToggle
-  alias: Lights - TOGGLE All Outside Lights from actionable notification
+  alias: Actionable Notification (Lights) - TOGGLE All Outside Lights from actionable
+    notification
   trigger:
   - event_data:
       actionName: TOGGLE_OUTSIDE_LIGHTS
@@ -148,7 +144,7 @@
     service: light.toggle
   initial_state: true
 - id: MobileAppLightsGate
-  alias: Driveway Gate - Open/Close from actionable notification
+  alias: Actionable Notification - Driveway Gate - Open/Close
   trigger:
   - event_data:
       actionName: OPEN_CLOSE_DRIVEWAY_GATE
@@ -159,7 +155,7 @@
     service: switch.toggle
   initial_state: true
 - id: '20'
-  alias: Actionable Notification  - Jenny Approaching Home
+  alias: Actionable Notification - Jenny Approaching Home
   trigger:
   - below: '750'
     entity_id: proximity.jenny_to_home
@@ -178,11 +174,11 @@
       data:
         push:
           category: ARRIVING_HOME
-      message: Approaching Home
+      message: Jenny Approaching Home
     service: notify.mobile_app_gregs_iphone_8_plus
   initial_state: true
 - id: OutsideLighstOffWhenLeaving
-  alias: Lights - Turn Outside Lights OFF when leaving
+  alias: Lights (Outside) - Turn OFF when leaving
   trigger:
   - entity_id: device_tracker.life360_jenny
     from: home
@@ -199,7 +195,7 @@
     entity_id: light.all_outside_lights
     service: light.turn_off
 - id: FlatHeaterOffWhenSallyLeaves
-  alias: Heater - Turn OFF Flat Heater when Sally leaves in the morning
+  alias: Heater (Flat) - Turn OFF Flat Heater when Sally leaves in the morning
   trigger:
   - entity_id: device_tracker.life360_sally
     from: home
@@ -251,7 +247,7 @@
     platform: numeric_state
   condition: []
   action:
-  - data_template:
+  - data:
       data:
         attachment:
           content-type: png
@@ -259,13 +255,13 @@
       message: There are HACS upgrades available!
       title: HACS Upgrades Available!
     service: notify.mobile_app_gregs_iphone_8_plus
-  - data_template:
+  - data:
       message: There are HACS upgrades available!
       notification_id: hacs_upgrade
       title: HACS Upgrades Available!
     service: persistent_notification.create
 - id: '1582284127172'
-  alias: Geyser - Turn OFF Flat Geyser after power restore.
+  alias: Geyser (Flat) - Turn OFF Flat Geyser after power restore.
   description: ''
   trigger:
   - event: start
@@ -280,30 +276,309 @@
   trigger:
   - entity_id: sensor.south_africa_coronavirus_confirmed
     platform: state
-  - entity_id: sensor.south_africa_coronavirus_deaths
-    platform: state
-  - entity_id: sensor.south_africa_coronavirus_recovered
-    platform: state
   action:
-  - data_template:
+  - data:
       data:
         attachment:
           content-type: png
           url: https://brands.home-assistant.io/coronavirus/logo.png
-      message: South Africa COVID-19 Update. Confirmed Cases {{ states('sensor.south_africa_coronavirus_confirmed')
-        }}, Current Cases {{ states('sensor.south_africa_coronavirus_current') }},
-        Deaths {{ states('sensor.south_africa_coronavirus_deaths') }}, Recovered {{
-        states('sensor.south_africa_coronavirus_recovered') }}.
-      title: COVID-19
+      message: 'South Africa: Confirmed Cases {{  states(''sensor.south_africa_coronavirus_confirmed'')
+        }}, Current Cases {{ states(''sensor.south_africa_coronavirus_current'') }},
+        Deaths {{ states(''sensor.south_africa_coronavirus_deaths'') }}, Recovered
+        {{ states(''sensor.south_africa_coronavirus_recovered'') }}.'
+      title: COVID-19 Update
     service: notify.mobile_app_gregs_iphone_8_plus
-  - data_template:
+  - data:
       data:
         attachment:
           content-type: png
           url: https://brands.home-assistant.io/coronavirus/logo.png
-      message: South Africa COVID-19 Update. Confirmed Cases {{ states('sensor.south_africa_coronavirus_confirmed')
-        }}, Current Cases {{ states('sensor.south_africa_coronavirus_current') }},
-        Deaths {{ states('sensor.south_africa_coronavirus_deaths') }}, Recovered {{
-        states('sensor.south_africa_coronavirus_recovered') }}.
-      title: COVID-19
+      message: 'South Africa: Confirmed Cases {{  states(''sensor.south_africa_coronavirus_confirmed'')
+        }}, Current Cases {{ states(''sensor.south_africa_coronavirus_current'') }},
+        Deaths {{ states(''sensor.south_africa_coronavirus_deaths'') }}, Recovered
+        {{ states(''sensor.south_africa_coronavirus_recovered'') }}.'
+      title: COVID-19 Update
     service: notify.mobile_app_jenny_s_iphone_7_plus
+- id: '1586859764558'
+  alias: Geyser (Flat) - Turn On at 05:45 & 16:00
+  description: ''
+  trigger:
+  - at: 05:45
+    platform: time
+  - at: '16:00'
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.sonoff_1000878ab4
+    service: switch.turn_on
+- id: '1586859945051'
+  alias: Geyser (Flat) - Turn Off at 06:15 & 17:00
+  description: ''
+  trigger:
+  - at: 06:15
+    platform: time
+  - at: '17:00'
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.sonoff_1000878ab4
+    service: switch.turn_off
+- id: '1587207947257'
+  alias: Alert - Fridge Door Open
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.fridge_door
+    for: 00:02
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: The Penguins are escaping!
+      title: Fridge/Freezer Door Open
+    service: notify.mobile_app_gregs_iphone_8_plus
+  - data:
+      message: The Penguins are escaping!
+      title: Fridge/Freezer Door Open
+    service: notify.mobile_app_jenny_s_iphone_7_plus
+- id: '1587642239663'
+  alias: Lights (Lounge) -  Lamp ON
+  description: ''
+  trigger:
+  - above: 0
+    below: 50
+    device_id: c923f5ffc53a4eaf9dfdcfb2e75c0e79
+    domain: sensor
+    entity_id: sensor.lounge_brightness
+    platform: device
+    type: value
+  condition:
+  - after: '16:00'
+    before: '20:15'
+    condition: time
+  action:
+  - device_id: 122588a7bba54502863278816bd0a342
+    domain: light
+    entity_id: light.lounge_lamp
+    type: turn_on
+- id: '1588011290244'
+  alias: Lights (Lounge) - Lamp Off
+  description: ''
+  trigger:
+  - at: '20:15'
+    platform: time
+  condition: []
+  action:
+  - device_id: 122588a7bba54502863278816bd0a342
+    domain: light
+    entity_id: light.lounge_lamp
+    type: turn_off
+- id: '1588085424112'
+  alias: Heater (Nursery) - ON
+  description: Turn heater on if temp falls below 21
+  trigger:
+  - below: 21
+    device_id: bf88b8443fb84ab0873452e77484c384
+    domain: sensor
+    entity_id: sensor.nursery_temperature
+    platform: device
+    type: value
+  - event: sunset
+    offset: 00:30:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - device_id: bd27937f6319401f96d690aaa25267c4
+    domain: switch
+    entity_id: switch.nursery_heater
+    type: turn_on
+- id: '1588085513518'
+  alias: Heater (Nursery) - OFF
+  description: 'Turn nursery heater off if temp goes over 22
+
+    '
+  trigger:
+  - above: 22
+    device_id: bf88b8443fb84ab0873452e77484c384
+    domain: sensor
+    entity_id: sensor.nursery_temperature
+    platform: device
+    type: value
+  - event: sunrise
+    offset: '1:00:00'
+    platform: sun
+  condition: []
+  action:
+  - device_id: bd27937f6319401f96d690aaa25267c4
+    domain: switch
+    entity_id: switch.nursery_heater
+    type: turn_off
+- id: '1588348567722'
+  alias: Lights (Outside) - Turn OFF after 10 min
+  description: ''
+  trigger:
+  - entity_id: light.all_outside_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - delay: 00:10:00
+  - data: {}
+    entity_id: light.all_outside_lights
+    service: light.turn_off
+- id: '1588431563991'
+  alias: Lights (Lounge) - Toggle Lounge Light 2 on Switch Press
+  description: ''
+  trigger:
+  - device_id: 22d4a717e9ae4049af4db55ca25edefe
+    domain: binary_sensor
+    entity_id: binary_sensor.lounge_light_switch_3
+    platform: device
+    type: turned_on
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.lounge_light_2
+    service: light.toggle
+- id: '1588431712649'
+  alias: Lights (Lounge) - Toggle Lounge Light 1 on Switch Press
+  description: ''
+  trigger:
+  - device_id: 543c0a94b07a488b8889aeae8886cb75
+    domain: binary_sensor
+    entity_id: binary_sensor.lounge_light_switch_1
+    platform: device
+    type: turned_on
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.lounge_light_1
+    service: light.toggle
+- id: '1588431843726'
+  alias: Lights (Outside) - Turn ON if Driveway Gate Opens
+  description: ''
+  trigger:
+  - device_id: c923f5ffc53a4eaf9dfdcfb2e75c0e79
+    domain: binary_sensor
+    entity_id: binary_sensor.driveway_gate
+    platform: device
+    type: opened
+  condition:
+  - after: sunset
+    after_offset: -01:00:00
+    before: sunrise
+    condition: sun
+  action:
+  - data: {}
+    entity_id: light.all_outside_lights
+    service: light.turn_on
+- id: '1588432033164'
+  alias: Lights (Nursery) - Evening Lamp
+  description: ''
+  trigger:
+  - at: '18:30'
+    platform: time
+  condition: []
+  action:
+  - device_id: e81ae59a710744ce9e49ff7301b880f8
+    domain: light
+    entity_id: light.nursery_lamp
+    type: turn_on
+  - delay: 03:00:00
+  - device_id: e81ae59a710744ce9e49ff7301b880f8
+    domain: light
+    entity_id: light.nursery_lamp
+    type: turn_off
+- id: '1588432649153'
+  alias: Lights (Nursery) - Night Light
+  description: ''
+  trigger:
+  - at: '20:00:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness: '110'
+      rgb_color:
+      - 255
+      - 0
+      - 255
+    entity_id: light.nursery_led
+    service: light.turn_on
+  - delay: '11:00:00'
+  - data:
+      brightness: '120'
+      rgb_color:
+      - 0
+      - 255
+      - 0
+    entity_id: light.nursery_led
+    service: light.turn_on
+  - delay: 01:00:00
+  - data: {}
+    entity_id: light.nursery_led
+    service: light.turn_off
+- id: '1588432844873'
+  alias: System - Update OpenUV
+  description: ''
+  trigger:
+  - hours: '1'
+    platform: time_pattern
+  condition:
+  - after: sunrise
+    before: sunset
+    condition: sun
+  action:
+  - data: {}
+    service: openuv.update_data
+- id: '1588498643485'
+  alias: Alert - SSL Certificate Expiring
+  description: ''
+  trigger:
+  - below: '3'
+    entity_id: sensor.cert_expiry_gcswdownload_duckdns_org
+    platform: numeric_state
+  - below: '3'
+    entity_id: sensor.cert_expiry_gcswhassio_duckdns_org
+    platform: numeric_state
+  - below: '3'
+    entity_id: sensor.cert_expiry_gcswmedia_duckdns_org
+    platform: numeric_state
+  - below: '3'
+    entity_id: sensor.cert_expiry_gcswmotioneye_duckdns_org
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: 1 or more SSL Certifates are expiring soon, check NGINX configuration
+        to renew them.
+      notification_id: hacs_upgrade
+      title: SSL Certifate Expiring Soon
+    service: persistent_notification.create
+- id: '1588690578313'
+  alias: Alert - Slow Internet
+  description: ''
+  trigger:
+  - above: '200'
+    entity_id: sensor.speedtest_ping
+    platform: numeric_state
+  - below: '20'
+    entity_id: sensor.speedtest_download
+    platform: numeric_state
+  - below: '2'
+    entity_id: sensor.speedtest_upload
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: 'Ping: {{  states(''sensor.speedtest_ping'') }} ms Download: {{ states(''sensor.speedtest_download'')
+        }} Mbit/s Upload: {{ states(''sensor.speedtest_upload'') }} Mbit/s'
+      title: Slow Internet Speed Detected
+    service: notify.mobile_app_gregs_iphone_8_plus
